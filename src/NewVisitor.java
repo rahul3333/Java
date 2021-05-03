@@ -575,19 +575,26 @@ public class NewVisitor extends javax.swing.JFrame {
        String Name=jTextField1.getText();
        String PhnNo=tf2.getText();
        String Roomno=tf3.getText();
+       
+       
        if(PhnNo.length()>=10 && PhnNo.length()<=11){
         try
         {
             Class.forName("java.sql.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt=con.createStatement();
-            String query="Insert into visitor values('"+(Name)+"','"+(PhnNo)+"','"+(Roomno)+"',sysdate())";
-            JOptionPane.showMessageDialog(null,"Visitor inserted");
+            String query="INSERT INTO visitor VALUES('"+(Name)+"','"+(PhnNo)+"','"+(Roomno)+"',sysdate())";
+            
             stmt.executeUpdate(query);
+//            if(stmt)
+//            {
+//                JOptionPane.showMessageDialog(null,"Visitor inserted");
+//            }
         }
             catch (Exception e)
             {
                 JOptionPane.showMessageDialog(null,"error");
+                System.err.println(e);
             }
         jTextField1.setText(" ");
         tf3.setText(" ");

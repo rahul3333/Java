@@ -442,7 +442,7 @@ public class Welcome2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-VisitorList obj=new VisitorList();
+    VisitorList obj=new VisitorList();
    obj.setVisible(true);
    this.dispose();
         // TODO add your handling code here:

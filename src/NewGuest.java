@@ -648,7 +648,8 @@ obj.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 void updatestatus(){
 String RoomNo="";
-String status;String type=" ";
+String status;
+String type=" ";
             if(jRadioButton1.isSelected())
             {
                 Object selectedItem = combo1.getSelectedItem();
@@ -662,7 +663,7 @@ status=RoomNo+" Engaged";
 try
             {
                 Class.forName("java.sql.DriverManager");
-                com.mysql.jdbc.Connection con =(com.mysql.jdbc.Connection)DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+                com.mysql.jdbc.Connection con =(com.mysql.jdbc.Connection)DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
                 com.mysql.jdbc.Statement stmt =(com.mysql.jdbc.Statement)con.createStatement();
                 String query ="update gold set roomno = '"+status+"'where roomno='"+RoomNo+"';";
                 stmt.executeUpdate(query);
@@ -690,7 +691,7 @@ status=RoomNo+" Engaged";
 try
             {
                 Class.forName("java.sql.DriverManager");
-                com.mysql.jdbc.Connection con =(com.mysql.jdbc.Connection)DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+                com.mysql.jdbc.Connection con =(com.mysql.jdbc.Connection)DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
                 com.mysql.jdbc.Statement stmt =(com.mysql.jdbc.Statement)con.createStatement();
                 String query ="update silver set roomno = '"+status+"'where roomno='"+RoomNo+"';";
                 stmt.executeUpdate(query);
@@ -716,7 +717,7 @@ status=RoomNo+" Engaged";
 try
             {
                 Class.forName("java.sql.DriverManager");
-                com.mysql.jdbc.Connection con =(com.mysql.jdbc.Connection)DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+                com.mysql.jdbc.Connection con =(com.mysql.jdbc.Connection)DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
                 com.mysql.jdbc.Statement stmt =(com.mysql.jdbc.Statement)con.createStatement();
                 String query ="update platinum set roomno = '"+status+"'where roomno='"+RoomNo+"';";
                 stmt.executeUpdate(query);
@@ -735,15 +736,15 @@ try
         updatestatus();
         try {
             Class.forName("java.sql.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt=con.createStatement();
             String RoomNo="";
             Object selectedItem = combo1.getSelectedItem();
-if (selectedItem != null)
-{
-    RoomNo = selectedItem.toString();
-    
-}
+            if (selectedItem != null)
+            {
+                RoomNo = selectedItem.toString();
+
+            }
             String Name=jTextField2.getText();
             String NoOfP=jTextField6.getText();
             String NoOfDays;
@@ -795,7 +796,7 @@ if (selectedItem != null)
          if(PhnNo.length()>=10&&PhnNo.length()<=11){
              
           
-            String query="Insert into guest values('"+(RoomNo)+"','"+(Name)+"','"+(NoOfP)+"','"+(NoOfDays)+"','"+(type)+"','"+(PhnNo)+"','"+(firstDate)+"','"+(secondDate)+"',sysdate());";
+            String query="INSERT INTO guest VALUES('"+(RoomNo)+"','"+(Name)+"','"+(NoOfP)+"','"+(NoOfDays)+"','"+(type)+"','"+(PhnNo)+"','"+(firstDate)+"','"+(secondDate)+"',sysdate());";
             stmt.executeUpdate(query);
           JOptionPane.showMessageDialog(null,"Guest Inserted");
          }
@@ -1056,7 +1057,7 @@ System.exit(0);
         try {  
 combo1.removeAllItems();
      Class.forName("java.sql.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt=con.createStatement();
 
  ResultSet r=stmt.executeQuery("select * from silver");

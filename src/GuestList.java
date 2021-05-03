@@ -539,7 +539,7 @@ public class GuestList extends javax.swing.JFrame {
         try
         {
             Class.forName("java.sql.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt=con.createStatement();
             String query="SELECT * FROM guest where fromdate='"+booking+"';";
             ResultSet rs=stmt.executeQuery(query);
