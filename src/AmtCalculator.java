@@ -628,7 +628,7 @@ combo1.removeAllItems();
             
 
      Class.forName("java.sql.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt=con.createStatement();
 
  ResultSet r=stmt.executeQuery("select * from guest");

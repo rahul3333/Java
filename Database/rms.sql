@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 05:08 PM
+-- Generation Time: May 03, 2021 at 01:59 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -20,6 +20,98 @@ SET time_zone = "+00:00";
 --
 -- Database: `rms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill`
+--
+
+CREATE TABLE `bill` (
+  `RoomNo` char(15) DEFAULT NULL,
+  `Name` varchar(20) DEFAULT NULL,
+  `NoofP` int(11) DEFAULT NULL,
+  `NumberofDays` int(11) DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  `phoneNo` char(11) DEFAULT NULL,
+  `fromdate` date DEFAULT NULL,
+  `todate` date DEFAULT NULL,
+  `resbill` float DEFAULT NULL,
+  `roomtotal` float DEFAULT NULL,
+  `finaltotal` float DEFAULT NULL,
+  `spagym` int(11) DEFAULT NULL,
+  `laundry` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guest`
+--
+
+CREATE TABLE `guest` (
+  `RoomNo` char(15) DEFAULT NULL,
+  `Name` varchar(20) DEFAULT NULL,
+  `NoofP` int(11) DEFAULT NULL,
+  `NumberofDays` int(11) DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  `phoneNo` char(11) DEFAULT NULL,
+  `fromdate` date DEFAULT NULL,
+  `todate` date DEFAULT NULL,
+  `bookedon` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `guest`
+--
+
+INSERT INTO `guest` (`RoomNo`, `Name`, `NoofP`, `NumberofDays`, `type`, `phoneNo`, `fromdate`, `todate`, `bookedon`) VALUES
+('SLVR102', 'Saksham', 2, 1, 'SILVER', '8112273369', '2021-05-03', '2021-05-04', '2021-05-03 16:53:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reg`
+--
+
+CREATE TABLE `reg` (
+  `staffid` varchar(7) DEFAULT NULL,
+  `password` char(20) DEFAULT NULL,
+  `Phnno` char(10) DEFAULT NULL,
+  `name` char(20) DEFAULT NULL,
+  `email` char(40) DEFAULT NULL,
+  `rdate` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resturant`
+--
+
+CREATE TABLE `resturant` (
+  `name` char(50) DEFAULT NULL,
+  `Roomno` varchar(6) DEFAULT NULL,
+  `resbill` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `silver`
+--
+
+CREATE TABLE `silver` (
+  `roomno` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `silver`
+--
+
+INSERT INTO `silver` (`roomno`) VALUES
+('101 Engaged'),
+('102');
 
 -- --------------------------------------------------------
 
@@ -42,6 +134,26 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`id`, `password`, `phone`, `name`, `email`, `registrationDate`) VALUES
 ('101', '101', '8112273369', 'Saksham Jain', 'saksham.jain@sap.com', '2021-04-23 19:27:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visitor`
+--
+
+CREATE TABLE `visitor` (
+  `name` char(50) DEFAULT NULL,
+  `phnNo` char(11) DEFAULT NULL,
+  `Roomno` varchar(6) DEFAULT NULL,
+  `vdate` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `visitor`
+--
+
+INSERT INTO `visitor` (`name`, `phnNo`, `Roomno`, `vdate`) VALUES
+('sa', '8112273369', '101', '2021-05-03 16:35:00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
