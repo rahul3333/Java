@@ -13,9 +13,10 @@ public class StaffLogin extends javax.swing.JFrame {
 
     /** Creates new form StaffLogin */
     public StaffLogin() {
-         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
-         usernameField.setText("S");
+        usernameField.setText("101");
+        passwordField.setText("101");
     }
 
     /** This method is called from within the constructor to
@@ -61,6 +62,7 @@ public class StaffLogin extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         usernameField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        usernameField.setText("101");
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(21, 153, 87)));
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
