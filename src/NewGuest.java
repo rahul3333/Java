@@ -33,7 +33,7 @@ public class NewGuest extends javax.swing.JFrame {
             Class.forName("java.sql.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = con.createStatement();
-            ResultSet resultSet = stmt.executeQuery("SELECT DISTINCT rooms.RoomNo FROM rooms LEFT JOIN guest ON rooms.RoomNo=guest.RoomNo WHERE '"+dateCheckIn+"' NOT BETWEEN CheckInDate AND CheckOutDate AND '"+dateCheckOut+"' NOT BETWEEN CheckInDate AND CheckOutDate  AND rooms.Type = '"+type+"';");            
+            ResultSet resultSet = stmt.executeQuery("SELECT RoomNo FROM rooms WHERE Type = '"+type+"' EXCEPT SELECT RoomNo FROM guest WHERE '"+dateCheckIn+"' BETWEEN CheckInDate AND CheckOutDate OR '"+dateCheckOut+"' BETWEEN CheckInDate AND CheckOutDate AND Type = '"+type+"'");            
             if (!resultSet.isBeforeFirst()) 
             {
                 combo1.addItem("No Vacant Room For Selected Date");
@@ -59,6 +59,7 @@ public class NewGuest extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        defaultRadioButton = new javax.swing.JRadioButton();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jPanel15 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -82,6 +83,11 @@ public class NewGuest extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         showRoomButton = new javax.swing.JButton();
+
+        buttonGroup1.add(defaultRadioButton);
+        defaultRadioButton.setText("Deafult");
+        defaultRadioButton.setEnabled(false);
+        defaultRadioButton.setOpaque(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,6 +156,7 @@ public class NewGuest extends javax.swing.JFrame {
         radioButtonSilver.setForeground(new java.awt.Color(0, 176, 155));
         radioButtonSilver.setText("Silver Class");
         radioButtonSilver.setBorder(null);
+        radioButtonSilver.setEnabled(false);
         radioButtonSilver.setOpaque(false);
         radioButtonSilver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +170,7 @@ public class NewGuest extends javax.swing.JFrame {
         radioButtonPlatinum.setForeground(new java.awt.Color(0, 176, 155));
         radioButtonPlatinum.setText("Platinum Class");
         radioButtonPlatinum.setBorder(null);
+        radioButtonPlatinum.setEnabled(false);
         radioButtonPlatinum.setOpaque(false);
         radioButtonPlatinum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +189,7 @@ public class NewGuest extends javax.swing.JFrame {
         radioButtonGold.setForeground(new java.awt.Color(0, 176, 155));
         radioButtonGold.setText("Gold Class");
         radioButtonGold.setBorder(null);
+        radioButtonGold.setEnabled(false);
         radioButtonGold.setOpaque(false);
         radioButtonGold.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -435,7 +444,17 @@ public class NewGuest extends javax.swing.JFrame {
         //Date date = checkInDate.getDate();
         if(checkOut.compareTo(checkIn) > 0)
         {
-            System.out.println(checkIn+" "+checkOut);    
+            System.out.println(checkIn+" "+checkOut);
+            defaultRadioButton.setSelected(true);
+            jTextField1.setText("");
+            combo1.removeAllItems();
+            radioButtonSilver.setEnabled(true);
+            radioButtonGold.setEnabled(true);
+            radioButtonPlatinum.setEnabled(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Check Out Date Must Be After Check In Date");
         }
     }//GEN-LAST:event_showRoomButtonActionPerformed
 
@@ -456,6 +475,7 @@ public class NewGuest extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser checkInDate;
     private com.toedter.calendar.JDateChooser checkOutDate;
     private javax.swing.JComboBox<String> combo1;
+    private javax.swing.JRadioButton defaultRadioButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

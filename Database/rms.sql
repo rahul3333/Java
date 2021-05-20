@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2021 at 01:17 PM
+-- Generation Time: May 20, 2021 at 06:38 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -28,20 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bill` (
-  `RoomNo` char(15) DEFAULT NULL,
+  `RoomNo` char(15) NOT NULL,
   `Name` varchar(20) DEFAULT NULL,
-  `NoofP` int(11) DEFAULT NULL,
-  `NumberofDays` int(11) DEFAULT NULL,
-  `type` varchar(10) DEFAULT NULL,
-  `phoneNo` char(11) DEFAULT NULL,
-  `fromdate` date DEFAULT NULL,
-  `todate` date DEFAULT NULL,
-  `resbill` float DEFAULT NULL,
-  `roomtotal` float DEFAULT NULL,
-  `finaltotal` float DEFAULT NULL,
-  `spagym` int(11) DEFAULT NULL,
-  `laundry` float DEFAULT NULL
+  `CheckInDate` date NOT NULL,
+  `CheckOutDate` date DEFAULT NULL,
+  `RoomTotal` float DEFAULT NULL,
+  `GST` float DEFAULT NULL,
+  `Total` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`RoomNo`, `Name`, `CheckInDate`, `CheckOutDate`, `RoomTotal`, `GST`, `Total`) VALUES
+('101', 'Saksham', '2021-05-20', '2021-05-21', 8000, 1440, 9440);
 
 -- --------------------------------------------------------
 
@@ -79,34 +80,30 @@ INSERT INTO `gold` (`roomno`, `status`) VALUES
 CREATE TABLE `guest` (
   `RoomNo` char(15) NOT NULL,
   `Name` varchar(20) DEFAULT NULL,
-  `NoofP` int(11) DEFAULT NULL,
-  `NumberofDays` int(11) DEFAULT NULL,
-  `type` varchar(10) DEFAULT NULL,
-  `phoneNo` char(11) DEFAULT NULL,
-  `fromdate` date DEFAULT NULL,
-  `todate` date DEFAULT NULL,
-  `bookedon` datetime DEFAULT NULL
+  `Occupants` int(11) DEFAULT NULL,
+  `Days` int(11) DEFAULT NULL,
+  `Type` varchar(10) DEFAULT NULL,
+  `PhoneNo` char(11) DEFAULT NULL,
+  `CheckInDate` date NOT NULL,
+  `CheckOutDate` date DEFAULT NULL,
+  `BookingDate` datetime DEFAULT NULL,
+  `CheckedOut` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `guest`
 --
 
-INSERT INTO `guest` (`RoomNo`, `Name`, `NoofP`, `NumberofDays`, `type`, `phoneNo`, `fromdate`, `todate`, `bookedon`) VALUES
-('201', 'Sarthak', 3, 5, 'GOLD', '9782927533', '2021-05-20', '2021-05-25', '2021-05-18 13:55:46'),
-('SLVR101', 'Saksham', 2, 4, 'SILVER', '8112273369', '2021-05-04', '2021-05-07', '2021-05-04 00:00:00'),
-('SLVR102', 'Saksham', 2, 4, 'SILVER', '8112273369', '2021-05-03', '2021-05-07', '2021-05-04 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `platinum`
---
-
-CREATE TABLE `platinum` (
-  `roomno` int(100) NOT NULL,
-  `status` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `guest` (`RoomNo`, `Name`, `Occupants`, `Days`, `Type`, `PhoneNo`, `CheckInDate`, `CheckOutDate`, `BookingDate`, `CheckedOut`) VALUES
+('101', 'Saksham', 2, 4, 'SILVER', '8112273369', '2021-05-20', '2021-05-21', '2021-05-04 00:00:00', 1),
+('102', 'Saksham', 2, 4, 'SILVER', '8112273369', '2021-05-20', '2021-05-22', '2021-05-04 00:00:00', 0),
+('103', 'Rajesh Jain', 2, 1, 'SILVER', ' 8114468402', '2021-05-20', '2021-05-21', '2021-05-20 17:17:36', 0),
+('103', 'Barkha', 2, 4, 'SILVER', '8112273369', '2021-05-25', '2021-05-28', '2021-05-04 00:00:00', 0),
+('201', 'Sarthak', 3, 5, 'GOLD', '9782927533', '2021-05-20', '2021-05-25', '2021-05-18 13:55:46', 0),
+('202', 'Saksham', 2, 4, 'GOLD', '8112273369', '2021-05-20', '2021-05-25', '2021-05-04 00:00:00', 0),
+('203', 'Saksham', 2, 4, 'GOLD', '8112273369', '2021-05-20', '2021-05-21', '2021-05-04 00:00:00', 0),
+('301', 'Barkha', 2, 4, 'PLATINUM', '8112273369', '2021-05-20', '2021-05-28', '2021-05-04 00:00:00', 0),
+('302', 'Sarthak', 3, 5, 'PLATINUM', '9782927533', '2021-05-20', '2021-05-25', '2021-05-18 13:55:46', 0);
 
 -- --------------------------------------------------------
 
@@ -134,6 +131,32 @@ CREATE TABLE `resturant` (
   `Roomno` varchar(6) DEFAULT NULL,
   `resbill` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `RoomNo` int(100) NOT NULL,
+  `Type` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`RoomNo`, `Type`) VALUES
+(101, 'Silver'),
+(102, 'Silver'),
+(103, 'Silver'),
+(104, 'Silver'),
+(201, 'Gold'),
+(202, 'Gold'),
+(203, 'Gold'),
+(301, 'Platinum'),
+(302, 'Platinum');
 
 -- --------------------------------------------------------
 
@@ -202,6 +225,12 @@ INSERT INTO `visitor` (`name`, `phnNo`, `Roomno`, `vdate`) VALUES
 --
 
 --
+-- Indexes for table `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`RoomNo`,`CheckInDate`);
+
+--
 -- Indexes for table `gold`
 --
 ALTER TABLE `gold`
@@ -211,13 +240,13 @@ ALTER TABLE `gold`
 -- Indexes for table `guest`
 --
 ALTER TABLE `guest`
-  ADD PRIMARY KEY (`RoomNo`);
+  ADD PRIMARY KEY (`RoomNo`,`CheckInDate`);
 
 --
--- Indexes for table `platinum`
+-- Indexes for table `rooms`
 --
-ALTER TABLE `platinum`
-  ADD PRIMARY KEY (`roomno`);
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`RoomNo`);
 
 --
 -- Indexes for table `silver`
