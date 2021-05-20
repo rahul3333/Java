@@ -558,22 +558,22 @@ public class GuestList extends javax.swing.JFrame {
             Class.forName("java.sql.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = conn.createStatement();
-            String query = "SELECT * FROM guest WHERE '"+bookingList+"' BETWEEN fromdate AND todate;";
+            String query = "SELECT * FROM guest WHERE '"+bookingList+"' BETWEEN CheckInDate AND CheckOutDate;";
             //SELECT * FROM `guest` WHERE '2021-05-03' BETWEEN fromdate AND todate
             ResultSet rs=stmt.executeQuery(query);
             while(rs.next())
             {
                 String RoomNo=rs.getString("RoomNO");
                 String Name=rs.getString("Name");
-                String NoOfP=rs.getString("NoOfP");
+                String NoOfP=rs.getString("Occupants");
 
-                String NumberofDays=rs.getString("NumberofDays");
-                String type=rs.getString("type");
+                String NumberofDays=rs.getString("Days");
+                String type=rs.getString("Type");
 
                 String PhoneNO=rs.getString("PhoneNO");
-                String from=rs.getString("fromdate");
-                String to=rs.getString("todate");
-                String bookingOn=rs.getString("bookedon");
+                String from=rs.getString("CheckInDate");
+                String to=rs.getString("CheckOutDate");
+                String bookingOn=rs.getString("BookingDate");
                 Object[] ob1={RoomNo,Name,NoOfP,NumberofDays,type,PhoneNO,from,to,bookingOn};
                 tableModel.addRow(ob1);
             }

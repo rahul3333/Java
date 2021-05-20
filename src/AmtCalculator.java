@@ -5,36 +5,41 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class AmtCalculator extends javax.swing.JFrame {
+    String roomNo, type, name, days, phoneNo, checkInDate, checkOutDate, bookingDate, occupants;
+    double roomTotal = 0, finalTotal = 0, gst=0;
+    SimpleDateFormat a1 = new SimpleDateFormat("yyyy-MM-dd");
+    Date date = new Date();
+    String today = a1.format(date);
+    
     public AmtCalculator() {
-
         initComponents();
         tf1.setVisible(false);
         tf2.setVisible(false);
         tf3.setVisible(false);
-        tf4.setVisible(false);
         jLabel1.setVisible(false);
         jLabel2.setVisible(false);
         jLabel3.setVisible(false);
-        jLabel5.setVisible(false);
         jButton5.setVisible(false);
         ta1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
-    public void getGuestList()
+    void getGuestList()
     {
         combo1.removeAllItems();
         try {
             Class.forName("java.sql.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = con.createStatement();
-            ResultSet r = stmt.executeQuery("select * from guest");
+            ResultSet r = stmt.executeQuery("SELECT * FROM guest WHERE '"+today+"' BETWEEN CheckInDate AND CheckOutDate AND CheckedOut = 0");
             while (r.next()) {
-                combo1.addItem(r.getString("RoomNO"));
+                combo1.addItem(r.getString("RoomNO")+"("+r.getString("Type")+" )- "+r.getString("Name"));
             }
             conn.close();
         } catch (ClassNotFoundException | SQLException e) {
@@ -59,8 +64,6 @@ public class AmtCalculator extends javax.swing.JFrame {
         tf2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        tf4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         combo1 = new javax.swing.JComboBox<>();
@@ -87,22 +90,22 @@ public class AmtCalculator extends javax.swing.JFrame {
         ta1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(150, 201, 61)));
         jScrollPane1.setViewportView(ta1);
 
-        jPanel15.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 450, 140));
+        jPanel15.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 450, 140));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 176, 155));
         jLabel4.setText("Room Number");
-        jPanel15.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 30));
+        jPanel15.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, 30));
 
         tf1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tf1.setForeground(new java.awt.Color(255, 0, 0));
         tf1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
-        jPanel15.add(tf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 108, 580, 40));
+        jPanel15.add(tf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 620, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 176, 155));
         jLabel2.setText("Name");
-        jPanel15.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 100, -1));
+        jPanel15.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 100, -1));
 
         tf2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tf2.setForeground(new java.awt.Color(255, 0, 0));
@@ -112,34 +115,17 @@ public class AmtCalculator extends javax.swing.JFrame {
                 tf2ActionPerformed(evt);
             }
         });
-        jPanel15.add(tf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 580, 40));
+        jPanel15.add(tf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 620, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 176, 155));
         jLabel3.setText("No. Of Days");
-        jPanel15.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, -1));
+        jPanel15.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 210, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 176, 155));
         jLabel1.setText("Roomtype");
-        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-
-        tf4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tf4.setForeground(new java.awt.Color(255, 0, 0));
-        tf4.setText("0");
-        tf4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
-        tf4.setFocusCycleRoot(true);
-        tf4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf4ActionPerformed(evt);
-            }
-        });
-        jPanel15.add(tf4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 580, 40));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 176, 155));
-        jLabel5.setText("Restaurant Bill");
-        jPanel15.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, -1));
+        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 176, 155));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -151,19 +137,19 @@ public class AmtCalculator extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, 240, 50));
+        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 620, 50));
 
         jButton3.setBackground(new java.awt.Color(0, 176, 155));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Back");
+        jButton3.setText("Cancel");
         jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 150, 50));
+        jPanel15.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 650, 270, 50));
 
         combo1.setBackground(new java.awt.Color(0, 176, 155));
         combo1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -185,7 +171,7 @@ public class AmtCalculator extends javax.swing.JFrame {
                 combo1ActionPerformed(evt);
             }
         });
-        jPanel15.add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 580, -1));
+        jPanel15.add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 620, -1));
 
         showBill.setBackground(new java.awt.Color(0, 176, 155));
         showBill.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -197,7 +183,7 @@ public class AmtCalculator extends javax.swing.JFrame {
                 showBillActionPerformed(evt);
             }
         });
-        jPanel15.add(showBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 170, 50));
+        jPanel15.add(showBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 170, 140));
 
         tf3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tf3.setForeground(new java.awt.Color(255, 0, 0));
@@ -207,21 +193,21 @@ public class AmtCalculator extends javax.swing.JFrame {
                 tf3ActionPerformed(evt);
             }
         });
-        jPanel15.add(tf3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 580, 40));
+        jPanel15.add(tf3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 620, 40));
 
         jButton5.setBackground(new java.awt.Color(0, 176, 155));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("DONE");
+        jButton5.setText("Checkout");
         jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 670, 150, 50));
+        jPanel15.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 650, 350, 50));
 
-        kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 920, 770));
+        kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 680, 730));
 
         getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2310, 1120));
 
@@ -237,10 +223,6 @@ public class AmtCalculator extends javax.swing.JFrame {
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void tf4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf4ActionPerformed
     String resbill = "0";
 
     void billofRestaurant() {
@@ -255,7 +237,6 @@ public class AmtCalculator extends javax.swing.JFrame {
 
             if (rs.next()) {
                 resbill = rs.getString("resbill");
-                tf4.setText(" " + resbill);
 
             }
 
@@ -268,31 +249,31 @@ public class AmtCalculator extends javax.swing.JFrame {
         }
     }
 
-    String roomno, type, name, NumberofDays, phnno, fromdate, todate, bookedon, NoofP;
+    
     private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
-        String a = (String) combo1.getSelectedItem();
+        String selectedRoom = (String) combo1.getSelectedItem();
+        selectedRoom = selectedRoom.substring(0, 3);
+        System.out.println(selectedRoom);
         try {
             Class.forName("java.sql.Driver");
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "Select * from guest where RoomNO='" + a + "';";
+            String query = "Select * from guest where RoomNO='" + selectedRoom + "';";
 
             ResultSet rs = stmt.executeQuery(query);
 
             if (rs.next()) {
                 name = rs.getString("Name");
-                NumberofDays = rs.getString("NumberofDays");
-                type = rs.getString("type");
-                roomno = rs.getString("RoomNO");
-                phnno = rs.getString("PhoneNO");
-                fromdate = rs.getString("fromdate");
-                todate = rs.getString("todate");
-                bookedon = rs.getString("bookedon");
-                NoofP = rs.getString("NoofP");
+                days = rs.getString("Days");
+                type = rs.getString("Type");
+                roomNo = rs.getString("RoomNO");
+                phoneNo = rs.getString("PhoneNO");
+                checkInDate = rs.getString("CheckInDate");
+                checkOutDate = rs.getString("CheckOutDate");
+                bookingDate = rs.getString("BookingDate");
+                occupants = rs.getString("Occupants");
                 tf1.setText(" " + name);
-
-                tf2.setText(" " + NumberofDays);
-
+                tf2.setText(" " + days);
                 tf3.setText("" + type);
             }
 
@@ -306,11 +287,9 @@ public class AmtCalculator extends javax.swing.JFrame {
         tf1.setVisible(true);
         tf2.setVisible(true);
         tf3.setVisible(true);
-        tf4.setVisible(true);
         jLabel1.setVisible(true);
         jLabel2.setVisible(true);
         jLabel3.setVisible(true);
-        jLabel5.setVisible(true);
 
     }//GEN-LAST:event_combo1ActionPerformed
 
@@ -321,124 +300,57 @@ public class AmtCalculator extends javax.swing.JFrame {
     private void combo1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combo1MouseEntered
 
     }//GEN-LAST:event_combo1MouseEntered
-    double total = 0, finaltotal = 0;
+    
     private void showBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBillActionPerformed
         jButton5.setVisible(true);
         ta1.setVisible(true);
-        double day, res;
-        day = Double.parseDouble(tf2.getText());
-        res = Double.parseDouble(tf4.getText());
-        String name = tf1.getText();
-        String type = tf3.getText();
+        double day = Double.parseDouble(days);
         if (type.equals("SILVER")) {
-            total = 2000 * day;
+            roomTotal = 2000 * day;
         } else if (type.equals("GOLD")) {
-            total = 3500 * day;
+            roomTotal = 3500 * day;
         } else if (type.equals("PLATINUM")) {
-            total = 5000 * day;
+            roomTotal = 5000 * day;
         }
+        gst = (roomTotal/100)*18;
+        finalTotal = roomTotal+gst;
 
-        finaltotal = total + res;
-
-        ta1.setText("Mr/Mrs " + name + " Your Bill is \n" + finaltotal);
+        ta1.setText(
+                "Mr/Mrs " + name + "\n" +
+                "Room(" +type+ ") * " +days+ " = " +roomTotal+ "\n" +
+                "CGST(9%) = " +gst/2+ "\n" +
+                "SGST(9%) = " +gst/2+ "\n" +
+                "Total = " +finalTotal
+        );
 
     }//GEN-LAST:event_showBillActionPerformed
 
     private void combo1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combo1MouseExited
 
     }//GEN-LAST:event_combo1MouseExited
-    void deleterecordofguest_res() {
+    
+    void updateCheckOutStatus() {
         String n = (String) combo1.getSelectedItem();
         String m = tf2.getText();
         try {
             Class.forName("java.sql.DriverManager");
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "Delete from guest  where RoomNO = '" + n + "';";
+            String query = "UPDATE guest SET CheckedOut = 1 WHERE RoomNO = '"+roomNo+"' AND CheckInDate ='"+checkInDate+"';";
             stmt.executeUpdate(query);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-
-    void changestatus() {
-        String Type = tf3.getText();
-        String RoomNo = (String) combo1.getSelectedItem();
-        try 
-        {
-            Class.forName("java.sql.DriverManager");
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
-            Statement stmt = (Statement) con.createStatement();
-            String query = "UPDATE " +Type+ " set status = 'EMPTY' WHERE roomno = "+RoomNo+";";
-            stmt.executeUpdate(query);
-            } 
-        catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        
-        
-        
-//        if(Type.equals("GOLD"))
-//        {}
-//        else if(Type.equals("Silver"))
-//        {}
-//        else if(Type.equals("PLATINUM"))
-//        {}
-//        
-//        if (t.equals("GOLD")) {
-//            try {
-//                Class.forName("java.sql.DriverManager");
-//                Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
-//                Statement stmt = (Statement) con.createStatement();
-//                String query = "update gold set roomno =LEFT(roomno,2) where roomno like '%" + c + "%';";
-//
-//                stmt.executeUpdate(query);
-//
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, e.getMessage());
-//            }
-////for checkout query will be "update gold set roomno =LEFT(roomno,2) where roomno='"+RoomNo+"';";
-//        }
-//        if (t.equals("SILVER")) {
-//            try {
-//                Class.forName("java.sql.DriverManager");
-//                Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projectwork", "root", "1234");
-//                Statement stmt = (Statement) con.createStatement();
-//                String query = "update silver set roomno =LEFT(roomno,2) where roomno like '%" + c + "%';";
-//
-//                stmt.executeUpdate(query);
-//
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, e.getMessage());
-//            }
-//        }
-//        if (t.equals("PLATINUM")) {
-//
-//            try {
-//                Class.forName("java.sql.DriverManager");
-//                Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projectwork", "root", "1234");
-//                Statement stmt = (Statement) con.createStatement();
-//                String query = "update platinum set roomno =LEFT(roomno,2) where roomno like '%" + c + "%';";
-//
-//                stmt.executeUpdate(query);
-//
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, e.getMessage());
-//            }
-//        }
-
-    }
-
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+    
+    void generateBill()
+    {
         try {
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/projectwork", "root", "1234");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = con.createStatement();
-            String query = "insert into bill values('" + roomno + "','" + name + "','" + NoofP + "','" + NumberofDays + "','" + type + "','" + phnno + "','" + fromdate + "','" + todate + "','" + resbill + "','" + total + "','" + finaltotal + "');";
+            String query = "INSERT INTO bill VALUES('" + roomNo + "','" + name + "','"  + checkInDate + "','" + checkOutDate + "','" + roomTotal + "','" + gst + "','" + finalTotal + "');";
             stmt.executeUpdate(query);
 
             JOptionPane.showMessageDialog(null, "Thanks ' RECORD ADDED'");
@@ -450,13 +362,17 @@ public class AmtCalculator extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        
+    }
+    
 
-        changestatus();
-        deleterecordofguest_res();
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        generateBill();
+        updateCheckOutStatus();
         tf1.setText("");
         tf2.setText("");
         tf3.setText("");
-        tf4.setText("0");
         combo1.setSelectedIndex(-1);
         ta1.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -490,7 +406,6 @@ public class AmtCalculator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JScrollPane jScrollPane1;
@@ -500,6 +415,5 @@ public class AmtCalculator extends javax.swing.JFrame {
     private javax.swing.JTextField tf1;
     private javax.swing.JTextField tf2;
     private javax.swing.JTextField tf3;
-    private javax.swing.JTextField tf4;
     // End of variables declaration//GEN-END:variables
 }
