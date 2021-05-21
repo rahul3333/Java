@@ -442,21 +442,35 @@ public class NewGuest extends javax.swing.JFrame {
 
     private void showRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRoomButtonActionPerformed
         // TODO add your handling code here:
+        radioButtonSilver.setEnabled(false);
+        radioButtonGold.setEnabled(false);
+        radioButtonPlatinum.setEnabled(false);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date checkIn =  this.checkInDate.getDate();
         Date checkOut =  this.checkOutDate.getDate();
+        Date today = new Date();
+        System.out.println(today+" "+checkIn);
+        System.out.println(checkIn.compareTo(today));
         dateCheckIn = dateFormat.format(this.checkInDate.getDate());
         dateCheckOut = dateFormat.format(this.checkOutDate.getDate());
+        String dateToday = dateFormat.format(today);
         //Date date = checkInDate.getDate();
-        if(checkOut.compareTo(checkIn) > 0)
+        if(dateCheckOut.compareTo(dateCheckIn) > 0)
         {
-            System.out.println(checkIn+" "+checkOut);
-            defaultRadioButton.setSelected(true);
-            jTextField1.setText("");
-            combo1.removeAllItems();
-            radioButtonSilver.setEnabled(true);
-            radioButtonGold.setEnabled(true);
-            radioButtonPlatinum.setEnabled(true);
+            if(dateCheckIn.compareTo(dateToday) >= 0)
+            {
+                System.out.println(checkIn+" "+checkOut);
+                defaultRadioButton.setSelected(true);
+                jTextField1.setText("");
+                combo1.removeAllItems();
+                radioButtonSilver.setEnabled(true);
+                radioButtonGold.setEnabled(true);
+                radioButtonPlatinum.setEnabled(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Invalid CheckIn Date");
+            }
         }
         else
         {

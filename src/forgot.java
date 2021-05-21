@@ -113,8 +113,8 @@ String a;
             try
             {
                 Class.forName("java.sql.Driver");
-                Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projectwork", "root", "1234");
-                String query = "select * from reg where staffid='"+staffid+"' and phnNo='"+phnno+"';";
+                Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
+                String query = "select * from staff where id='"+staffid+"' and phone='"+phnno+"';";
                 Statement stmt=(Statement) con.createStatement();
                 ResultSet rs=stmt.executeQuery(query);
                 if(rs.next())
@@ -137,9 +137,9 @@ String a;
             try
             {
                 Class.forName("java.sql.DriverManager");
-                Connection con =(Connection)DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+                Connection con =(Connection)DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
                 Statement stmt =(Statement)con.createStatement();
-                String query ="update reg set password = '"+a+"'where staffid='"+staffid+"';";
+                String query ="update staff set password = '"+a+"'where id='"+staffid+"';";
                 stmt.executeUpdate(query);
 
             }
