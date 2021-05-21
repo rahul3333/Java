@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.awt.Color;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -83,6 +84,7 @@ public class NewGuest extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         showRoomButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         buttonGroup1.add(defaultRadioButton);
         defaultRadioButton.setText("Deafult");
@@ -90,47 +92,45 @@ public class NewGuest extends javax.swing.JFrame {
         defaultRadioButton.setOpaque(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(2500, 2500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         kGradientPanel1.setkEndColor(new java.awt.Color(150, 201, 61));
         kGradientPanel1.setkStartColor(new java.awt.Color(0, 176, 155));
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setBackground(new Color(0.02f, 0.39f, 0.4f, 0.6f));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Room No");
-        jPanel15.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, -1));
+        jPanel15.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 170, -1));
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 0, 0));
         jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel15.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 730, 40));
+        jPanel15.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 730, 40));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Full Name");
-        jPanel15.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 110, -1));
+        jPanel15.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, -1));
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(255, 0, 0));
+        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jTextField6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel15.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 740, 40));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Phone Number");
-        jPanel15.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 140, -1));
+        jPanel15.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 140, -1));
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 0, 0));
         jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,20 +140,19 @@ public class NewGuest extends javax.swing.JFrame {
         jPanel15.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 730, 40));
 
         jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 0, 0));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel15.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 80, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Book Room");
-        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, -1));
+        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 270, -1));
 
-        radioButtonSilver.setBackground(new java.awt.Color(0, 176, 155));
+        radioButtonSilver.setBackground(new Color(0.02f, 0.39f, 0.4f, 0.0f));
         buttonGroup1.add(radioButtonSilver);
-        radioButtonSilver.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        radioButtonSilver.setForeground(new java.awt.Color(0, 176, 155));
+        radioButtonSilver.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        radioButtonSilver.setForeground(new java.awt.Color(255, 255, 255));
         radioButtonSilver.setText("Silver Class");
         radioButtonSilver.setBorder(null);
         radioButtonSilver.setEnabled(false);
@@ -165,9 +164,10 @@ public class NewGuest extends javax.swing.JFrame {
         });
         jPanel15.add(radioButtonSilver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
+        radioButtonPlatinum.setBackground(new Color(0.02f, 0.39f, 0.4f, 0.0f));
         buttonGroup1.add(radioButtonPlatinum);
-        radioButtonPlatinum.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        radioButtonPlatinum.setForeground(new java.awt.Color(0, 176, 155));
+        radioButtonPlatinum.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        radioButtonPlatinum.setForeground(new java.awt.Color(255, 255, 255));
         radioButtonPlatinum.setText("Platinum Class");
         radioButtonPlatinum.setBorder(null);
         radioButtonPlatinum.setEnabled(false);
@@ -179,14 +179,15 @@ public class NewGuest extends javax.swing.JFrame {
         });
         jPanel15.add(radioButtonPlatinum, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("No. Of Guest");
-        jPanel15.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, 230, -1));
+        jPanel15.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, 230, -1));
 
+        radioButtonGold.setBackground(new Color(0.02f, 0.39f, 0.4f, 0.0f));
         buttonGroup1.add(radioButtonGold);
-        radioButtonGold.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        radioButtonGold.setForeground(new java.awt.Color(0, 176, 155));
+        radioButtonGold.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        radioButtonGold.setForeground(new java.awt.Color(255, 255, 255));
         radioButtonGold.setText("Gold Class");
         radioButtonGold.setBorder(null);
         radioButtonGold.setEnabled(false);
@@ -202,7 +203,7 @@ public class NewGuest extends javax.swing.JFrame {
         bookNewRoom.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         bookNewRoom.setForeground(new java.awt.Color(255, 255, 255));
         bookNewRoom.setText("Book Room");
-        bookNewRoom.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        bookNewRoom.setBorder(null);
         bookNewRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookNewRoomActionPerformed(evt);
@@ -222,8 +223,7 @@ public class NewGuest extends javax.swing.JFrame {
         });
         jPanel15.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 60, 50));
 
-        combo1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        combo1.setForeground(new java.awt.Color(255, 0, 51));
+        combo1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         combo1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         combo1.setOpaque(false);
         combo1.addActionListener(new java.awt.event.ActionListener() {
@@ -233,11 +233,11 @@ public class NewGuest extends javax.swing.JFrame {
         });
         jPanel15.add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 650, 40));
 
-        kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 50, 850, 760));
+        kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 120, 850, 760));
 
+        jPanel2.setBackground(new Color(0.02f, 0.39f, 0.4f, 0.6f));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        checkInDate.setForeground(new java.awt.Color(0, 176, 155));
         checkInDate.setDateFormatString("yyyy-MM-dd");
         checkInDate.setVerifyInputWhenFocusTarget(false);
         checkInDate.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -256,33 +256,39 @@ public class NewGuest extends javax.swing.JFrame {
                 checkInDateMousePressed(evt);
             }
         });
-        jPanel2.add(checkInDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 230, 40));
+        jPanel2.add(checkInDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, 40));
 
-        checkOutDate.setForeground(new java.awt.Color(0, 176, 155));
         checkOutDate.setDateFormatString("yyyy-MM-dd");
-        jPanel2.add(checkOutDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 230, 40));
+        jPanel2.add(checkOutDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 230, 40));
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Check In");
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 200, -1));
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 200, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Check Out");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 200, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 200, -1));
 
+        showRoomButton.setBackground(new java.awt.Color(0, 176, 155));
+        showRoomButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        showRoomButton.setForeground(new java.awt.Color(255, 255, 255));
         showRoomButton.setText("Show Rooms");
         showRoomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showRoomButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(showRoomButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 170, 40));
+        jPanel2.add(showRoomButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 250, 40));
 
-        kGradientPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 560, 230));
+        kGradientPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 560, 230));
 
-        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-250, 0, 2310, 1310));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guests.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 2030, 1010));
+
+        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-250, 0, 2280, 1310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -481,6 +487,7 @@ public class NewGuest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;

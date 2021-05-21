@@ -2,7 +2,8 @@ import java.awt.Toolkit;
 import javax.swing.JOptionPane; 
 import javax.swing.table.*; 
 import java.sql.Connection; 
-import java.sql.DriverManager; 
+import java.sql.DriverManager;
+import java.awt.Color;
 import java.sql.Statement; 
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -74,6 +75,7 @@ public class NewVisitor extends javax.swing.JFrame {
         label1 = new javax.swing.JLabel();
         tf2 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 51));
@@ -84,11 +86,10 @@ public class NewVisitor extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(150, 201, 61));
         kGradientPanel1.setkStartColor(new java.awt.Color(0, 176, 155));
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 83, 178));
+        jPanel1.setBackground(new Color(1.0f,1.0f,1.0f,0.6f));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 176, 155));
@@ -467,14 +468,13 @@ public class NewVisitor extends javax.swing.JFrame {
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 550, 40));
 
-        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1010));
+        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1030));
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setBackground(new Color(0.31f,0.26f,0.18f,0.7f));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 0, 0));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -482,81 +482,84 @@ public class NewVisitor extends javax.swing.JFrame {
         });
         jPanel15.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 720, 40));
 
-        jButton1.setBackground(new java.awt.Color(0, 176, 155));
+        jButton1.setBackground(new Color(0.95f,0.92f,0.73f,0.8f));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new Color(0.18f,0.15f,0.16f,1.0f));
         jButton1.setText("Back");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 220, 70));
+        jPanel15.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 230, 70));
 
-        jButton2.setBackground(new java.awt.Color(0, 176, 155));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new Color(0.95f,0.92f,0.73f,0.8f));
+        jButton2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jButton2.setForeground(new Color(0.18f,0.15f,0.16f,1.0f));
         jButton2.setText("Add New Visitor");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 380, 70));
+        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 440, 70));
 
         tf3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf3.setForeground(new java.awt.Color(255, 0, 0));
-        tf3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
+        tf3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         tf3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf3ActionPerformed(evt);
             }
         });
-        jPanel15.add(tf3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 720, 40));
+        jPanel15.add(tf3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 720, 40));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new Color(0.95f,0.92f,0.73f,1.0f));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Room Number");
-        jPanel15.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 120, 60));
+        jPanel15.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 120, 60));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new Color(0.95f,0.92f,0.73f,1.0f));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Name");
-        jPanel15.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, -1));
+        jPanel15.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 170, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel1.setForeground(new Color(0.95f,0.92f,0.73f,1.0f));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("New Visitor");
         jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 310, 160));
 
-        label1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        label1.setForeground(new java.awt.Color(0, 176, 155));
+        label1.setBackground(new java.awt.Color(0, 0, 0));
+        label1.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        label1.setForeground(new Color(0.95f,0.92f,0.73f,1.0f));
         label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel15.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 600, 490, 80));
+        jPanel15.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 270, 40));
 
         tf2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf2.setForeground(new java.awt.Color(255, 0, 0));
-        tf2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
+        tf2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         tf2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf2ActionPerformed(evt);
             }
         });
-        jPanel15.add(tf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 720, 40));
+        jPanel15.add(tf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 720, 40));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setForeground(new Color(0.95f,0.92f,0.73f,1.0f));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Phone Number");
-        jPanel15.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 120, 60));
+        jPanel15.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 120, 60));
 
         kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 820, 700));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reception.jpg"))); // NOI18N
+        jLabel25.setText("jLabel25");
+        kGradientPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2110, 1030));
 
         getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2310, 1120));
 
@@ -912,6 +915,7 @@ jPanel14.setBackground(new java.awt.Color(0,176,155));        // TODO add your h
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

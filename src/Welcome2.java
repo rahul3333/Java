@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 
 public class Welcome2 extends javax.swing.JFrame {
+    
 
     /** Creates new form Welcome2 */
     public Welcome2() {
@@ -39,6 +40,7 @@ public class Welcome2 extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,10 +68,10 @@ public class Welcome2 extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("LOG OUT");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
+        jLabel4.setText("LOGOUT");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 70));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 430, 300, 300));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 840, 300, 70));
 
         jPanel7.setBackground(new java.awt.Color(0, 176, 155));
         jPanel7.setMinimumSize(new java.awt.Dimension(300, 300));
@@ -101,9 +103,9 @@ public class Welcome2 extends javax.swing.JFrame {
                 jLabel12MouseExited(evt);
             }
         });
-        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 70));
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 300, 300));
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 520, 300, 70));
 
         jPanel14.setBackground(new java.awt.Color(0, 176, 155));
         jPanel14.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,9 +126,9 @@ public class Welcome2 extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("CHECK OUT");
-        jPanel14.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
+        jPanel14.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 70));
 
-        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 430, 300, 300));
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 730, 300, 70));
 
         jPanel11.setBackground(new java.awt.Color(0, 176, 155));
         jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,9 +237,12 @@ public class Welcome2 extends javax.swing.JFrame {
                 jLabel7MouseExited(evt);
             }
         });
-        jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
+        jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 70));
 
-        jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 300, 300));
+        jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 630, 300, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/welcome.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2010, 990));
 
         kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2310, 1120));
 
@@ -379,6 +384,7 @@ public class Welcome2 extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;

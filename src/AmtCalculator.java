@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -70,46 +71,51 @@ public class AmtCalculator extends javax.swing.JFrame {
         showBill = new javax.swing.JButton();
         tf3 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1800, 1100));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         kGradientPanel1.setkEndColor(new java.awt.Color(150, 201, 61));
         kGradientPanel1.setkStartColor(new java.awt.Color(0, 176, 155));
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setBackground(new Color(0.30f, 0.18f, 0.10f, 1.0f));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ta1.setBackground(new java.awt.Color(189, 160, 100));
         ta1.setColumns(20);
-        ta1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ta1.setForeground(new java.awt.Color(255, 0, 0));
+        ta1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ta1.setForeground(new java.awt.Color(255, 255, 255));
         ta1.setRows(5);
         ta1.setText("\n");
         ta1.setToolTipText("");
-        ta1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(150, 201, 61)));
+        ta1.setBorder(null);
         jScrollPane1.setViewportView(ta1);
 
         jPanel15.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 450, 140));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Room Number");
         jPanel15.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, 30));
 
-        tf1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tf1.setForeground(new java.awt.Color(255, 0, 0));
-        tf1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
+        tf1.setBackground(new java.awt.Color(189, 160, 100));
+        tf1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tf1.setForeground(new java.awt.Color(255, 255, 255));
+        tf1.setBorder(null);
         jPanel15.add(tf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 620, 40));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name");
-        jPanel15.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 100, -1));
+        jPanel15.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 100, -1));
 
-        tf2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tf2.setForeground(new java.awt.Color(255, 0, 0));
-        tf2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
+        tf2.setBackground(new java.awt.Color(189, 160, 100));
+        tf2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tf2.setForeground(new java.awt.Color(255, 255, 255));
+        tf2.setBorder(null);
         tf2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf2ActionPerformed(evt);
@@ -117,21 +123,21 @@ public class AmtCalculator extends javax.swing.JFrame {
         });
         jPanel15.add(tf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 620, 40));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("No. Of Days");
-        jPanel15.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 210, -1));
+        jPanel15.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 210, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Roomtype");
-        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 176, 155));
+        jButton2.setBackground(new java.awt.Color(189, 160, 100));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("GET DETAILS");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -139,11 +145,11 @@ public class AmtCalculator extends javax.swing.JFrame {
         });
         jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 620, 50));
 
-        jButton3.setBackground(new java.awt.Color(0, 176, 155));
+        jButton3.setBackground(new java.awt.Color(189, 160, 100));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Cancel");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -151,10 +157,10 @@ public class AmtCalculator extends javax.swing.JFrame {
         });
         jPanel15.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 650, 270, 50));
 
-        combo1.setBackground(new java.awt.Color(0, 176, 155));
-        combo1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        combo1.setForeground(new java.awt.Color(255, 0, 0));
-        combo1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
+        combo1.setBackground(new java.awt.Color(189, 160, 100));
+        combo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        combo1.setForeground(new java.awt.Color(255, 255, 255));
+        combo1.setBorder(null);
         combo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 combo1MouseClicked(evt);
@@ -173,21 +179,22 @@ public class AmtCalculator extends javax.swing.JFrame {
         });
         jPanel15.add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 620, -1));
 
-        showBill.setBackground(new java.awt.Color(0, 176, 155));
+        showBill.setBackground(new java.awt.Color(189, 160, 100));
         showBill.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         showBill.setForeground(new java.awt.Color(255, 255, 255));
         showBill.setText("SHOW BILL");
-        showBill.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        showBill.setBorder(null);
         showBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showBillActionPerformed(evt);
             }
         });
-        jPanel15.add(showBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 170, 140));
+        jPanel15.add(showBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 150, 140));
 
-        tf3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tf3.setForeground(new java.awt.Color(255, 0, 0));
-        tf3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
+        tf3.setBackground(new java.awt.Color(189, 160, 100));
+        tf3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tf3.setForeground(new java.awt.Color(255, 255, 255));
+        tf3.setBorder(null);
         tf3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf3ActionPerformed(evt);
@@ -195,21 +202,25 @@ public class AmtCalculator extends javax.swing.JFrame {
         });
         jPanel15.add(tf3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 620, 40));
 
-        jButton5.setBackground(new java.awt.Color(0, 176, 155));
+        jButton5.setBackground(new java.awt.Color(189, 160, 100));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Checkout");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton5.setBorder(null);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 650, 350, 50));
+        jPanel15.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 650, 320, 50));
 
         kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 680, 730));
 
-        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2310, 1120));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/checkout.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2140, 1040));
+
+        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2140, 1040));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -406,6 +417,7 @@ public class AmtCalculator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JScrollPane jScrollPane1;

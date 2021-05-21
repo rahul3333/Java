@@ -4,6 +4,7 @@ import com.mysql.jdbc.Statement;
 import com.sun.glass.events.KeyEvent;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -39,6 +40,7 @@ public class StaffLogin extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         createUser = new javax.swing.JLabel();
         forgetPassword = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 153));
@@ -57,13 +59,13 @@ public class StaffLogin extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(21, 87, 153));
         kGradientPanel1.setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Staff Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Monotype Corsiva", 3, 48), new java.awt.Color(204, 0, 51))); // NOI18N
+        jPanel1.setBackground(new Color(1.0f,1.0f,1.0f,0.7f));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16)), "Staff Login", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 48), new java.awt.Color(102, 51, 0))); // NOI18N
         jPanel1.setLayout(null);
 
         usernameField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         usernameField.setText("101");
-        usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(21, 153, 87)));
+        usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameFieldActionPerformed(evt);
@@ -72,7 +74,7 @@ public class StaffLogin extends javax.swing.JFrame {
         jPanel1.add(usernameField);
         usernameField.setBounds(140, 80, 350, 30);
 
-        passwordField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(21, 153, 87)));
+        passwordField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
@@ -81,26 +83,24 @@ public class StaffLogin extends javax.swing.JFrame {
         jPanel1.add(passwordField);
         passwordField.setBounds(140, 150, 350, 30);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 133, 0));
+        jLabel4.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         jLabel4.setText("Username");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 80, 80, 40);
+        jLabel4.setBounds(20, 80, 100, 40);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 133, 0));
+        jLabel3.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         jLabel3.setText("Password");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 140, 80, 55);
+        jLabel3.setBounds(20, 140, 90, 55);
 
-        loginButton.setBackground(new java.awt.Color(51, 255, 102));
+        loginButton.setBackground(new java.awt.Color(0, 153, 204));
         loginButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("LOGIN");
         loginButton.setToolTipText("Press This for next");
         loginButton.setAlignmentY(0.0F);
         loginButton.setAutoscrolls(true);
-        loginButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        loginButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 0, true));
         loginButton.setRequestFocusEnabled(false);
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,7 +120,7 @@ public class StaffLogin extends javax.swing.JFrame {
         jPanel1.add(loginButton);
         loginButton.setBounds(30, 240, 470, 60);
 
-        createUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        createUser.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         createUser.setForeground(new java.awt.Color(0, 51, 255));
         createUser.setText("Create User");
         createUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,9 +129,9 @@ public class StaffLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(createUser);
-        createUser.setBounds(30, 340, 110, 20);
+        createUser.setBounds(390, 330, 110, 20);
 
-        forgetPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        forgetPassword.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         forgetPassword.setForeground(new java.awt.Color(0, 51, 255));
         forgetPassword.setText("Forgot Password?");
         forgetPassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,16 +140,37 @@ public class StaffLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(forgetPassword);
-        forgetPassword.setBounds(30, 310, 110, 20);
+        forgetPassword.setBounds(30, 330, 140, 22);
 
         kGradientPanel1.add(jPanel1);
-        jPanel1.setBounds(380, 230, 530, 380);
+        jPanel1.setBounds(340, 370, 530, 380);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resort.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        kGradientPanel1.add(jLabel2);
+        jLabel2.setBounds(100, 40, 1960, 1370);
 
         getContentPane().add(kGradientPanel1);
         kGradientPanel1.setBounds(-100, -40, 2160, 1380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void forgetPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgetPasswordMouseClicked
+        forgot forgetPasswordView = new forgot();
+        forgetPasswordView.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_forgetPasswordMouseClicked
+
+    private void createUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createUserMouseClicked
+        Register registerUserView = new Register();
+        registerUserView.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_createUserMouseClicked
+
+    private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
+
+    }//GEN-LAST:event_loginButtonKeyPressed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String username = usernameField.getText();
@@ -177,35 +198,19 @@ public class StaffLogin extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
-}//GEN-LAST:event_loginButtonActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonMouseClicked
 
-    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameFieldActionPerformed
-
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
 
-    private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
-
-    }//GEN-LAST:event_loginButtonKeyPressed
-
-    private void createUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createUserMouseClicked
-        Register registerUserView = new Register();
-        registerUserView.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_createUserMouseClicked
-
-    private void forgetPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgetPasswordMouseClicked
-        forgot forgetPasswordView = new forgot();
-        forgetPasswordView.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_forgetPasswordMouseClicked
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +227,7 @@ public class StaffLogin extends javax.swing.JFrame {
     private javax.swing.JLabel createUser;
     private javax.swing.JLabel forgetPassword;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JOptionPane jOptionPane1;

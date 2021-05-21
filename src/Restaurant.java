@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -117,6 +118,7 @@ public class Restaurant extends javax.swing.JFrame {
         total = new javax.swing.JTextField();
         roomcombo = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -126,7 +128,7 @@ public class Restaurant extends javax.swing.JFrame {
         kGradientPanel1.setOpaque(false);
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 83, 178));
+        jPanel1.setBackground(new Color(0.73f,0.45f,0.09f,0.4f));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 176, 155));
@@ -494,23 +496,23 @@ public class Restaurant extends javax.swing.JFrame {
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 550, 40));
 
-        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1010));
+        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1130));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new Color(0.41f,0.33f,0.29f,0.6f));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Main Course");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 130, 50));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Roti");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 40, 40));
 
         tf1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf1.setForeground(new java.awt.Color(255, 0, 51));
+        tf1.setForeground(new java.awt.Color(0, 176, 155));
         tf1.setText("1");
         tf1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf1.addActionListener(new java.awt.event.ActionListener() {
@@ -520,8 +522,8 @@ public class Restaurant extends javax.swing.JFrame {
         });
         jPanel2.add(tf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 60, -1));
 
-        tf2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf2.setForeground(new java.awt.Color(255, 0, 51));
+        tf2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tf2.setForeground(new java.awt.Color(0, 176, 155));
         tf2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -531,7 +533,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(tf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 80, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 176, 155));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("ADD");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -555,31 +557,31 @@ public class Restaurant extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Show Amount");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 670, 180, 50));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 670, 220, 50));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Select Item");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Quantity");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Rate");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 176, 155));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("ADD");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -600,7 +602,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(combo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 250, -1));
 
         tf3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf3.setForeground(new java.awt.Color(255, 0, 51));
+        tf3.setForeground(new java.awt.Color(0, 176, 155));
         tf3.setText("1");
         tf3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf3.addActionListener(new java.awt.event.ActionListener() {
@@ -610,8 +612,8 @@ public class Restaurant extends javax.swing.JFrame {
         });
         jPanel2.add(tf3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 60, -1));
 
-        tf4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf4.setForeground(new java.awt.Color(255, 0, 51));
+        tf4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tf4.setForeground(new java.awt.Color(0, 176, 155));
         tf4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -621,7 +623,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(tf4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, 80, -1));
 
         tf5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf5.setForeground(new java.awt.Color(255, 0, 51));
+        tf5.setForeground(new java.awt.Color(0, 176, 155));
         tf5.setText("1");
         tf5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf5.addActionListener(new java.awt.event.ActionListener() {
@@ -629,15 +631,15 @@ public class Restaurant extends javax.swing.JFrame {
                 tf5ActionPerformed(evt);
             }
         });
-        jPanel2.add(tf5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 60, 30));
+        jPanel2.add(tf5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 60, -1));
 
-        tf6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf6.setForeground(new java.awt.Color(255, 0, 51));
+        tf6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tf6.setForeground(new java.awt.Color(0, 176, 155));
         tf6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel2.add(tf6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 80, -1));
 
         tf7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf7.setForeground(new java.awt.Color(255, 0, 51));
+        tf7.setForeground(new java.awt.Color(0, 176, 155));
         tf7.setText("1");
         tf7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf7.addActionListener(new java.awt.event.ActionListener() {
@@ -647,13 +649,13 @@ public class Restaurant extends javax.swing.JFrame {
         });
         jPanel2.add(tf7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 60, -1));
 
-        tf8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf8.setForeground(new java.awt.Color(255, 0, 51));
+        tf8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tf8.setForeground(new java.awt.Color(0, 176, 155));
         tf8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel2.add(tf8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 80, -1));
 
         jButton4.setBackground(new java.awt.Color(0, 176, 155));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("ADD");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -664,7 +666,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(0, 176, 155));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("ADD");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -684,13 +686,13 @@ public class Restaurant extends javax.swing.JFrame {
         });
         jPanel2.add(combo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 250, -1));
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Rice and Biryani");
         jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Pizza");
         jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
 
@@ -719,17 +721,17 @@ public class Restaurant extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Add in Resort Bill");
-        jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton6.setBorder(null);
         jButton6.setName(""); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, -1, 50));
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 220, 50));
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Burger");
         jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
 
@@ -744,23 +746,23 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(combo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 250, -1));
 
         tf9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf9.setForeground(new java.awt.Color(255, 0, 51));
+        tf9.setForeground(new java.awt.Color(0, 176, 155));
         tf9.setText("1");
         tf9.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel2.add(tf9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, 60, -1));
 
-        tf10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf10.setForeground(new java.awt.Color(255, 0, 51));
+        tf10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tf10.setForeground(new java.awt.Color(0, 176, 155));
         tf10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf10ActionPerformed(evt);
             }
         });
-        jPanel2.add(tf10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 80, 30));
+        jPanel2.add(tf10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 80, -1));
 
         jButton7.setBackground(new java.awt.Color(0, 176, 155));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("ADD");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -771,17 +773,17 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, -1, -1));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Restaurant");
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Pasta");
         jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
 
         jButton8.setBackground(new java.awt.Color(0, 176, 155));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("ADD");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -792,13 +794,13 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 480, -1, -1));
 
         tf11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf11.setForeground(new java.awt.Color(255, 0, 51));
+        tf11.setForeground(new java.awt.Color(0, 176, 155));
         tf11.setText("1");
         tf11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel2.add(tf11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 490, 60, -1));
 
-        tf12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf12.setForeground(new java.awt.Color(255, 0, 51));
+        tf12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tf12.setForeground(new java.awt.Color(0, 176, 155));
         tf12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel2.add(tf12, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 80, -1));
 
@@ -812,8 +814,8 @@ public class Restaurant extends javax.swing.JFrame {
         });
         jPanel2.add(combo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 250, -1));
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Beverages");
         jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, -1, -1));
 
@@ -828,7 +830,7 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(combo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 250, -1));
 
         tf13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf13.setForeground(new java.awt.Color(255, 0, 51));
+        tf13.setForeground(new java.awt.Color(0, 176, 155));
         tf13.setText("1");
         tf13.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         tf13.addActionListener(new java.awt.event.ActionListener() {
@@ -838,13 +840,13 @@ public class Restaurant extends javax.swing.JFrame {
         });
         jPanel2.add(tf13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 530, 60, -1));
 
-        tf14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tf14.setForeground(new java.awt.Color(255, 0, 51));
+        tf14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tf14.setForeground(new java.awt.Color(0, 176, 155));
         tf14.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel2.add(tf14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 80, -1));
 
         jButton9.setBackground(new java.awt.Color(0, 176, 155));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("ADD");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -854,13 +856,13 @@ public class Restaurant extends javax.swing.JFrame {
         });
         jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 520, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Total Bill");
         jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 0, 51));
+        jTextField1.setForeground(new java.awt.Color(0, 176, 155));
         jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -870,17 +872,17 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 69, 400, 30));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Phone");
         jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 0, 51));
+        jTextField2.setForeground(new java.awt.Color(0, 176, 155));
         jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 129, 400, 30));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Roomno");
         jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
@@ -903,11 +905,15 @@ public class Restaurant extends javax.swing.JFrame {
         jPanel2.add(roomcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 400, -1));
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Enter Name");
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
 
         kGradientPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 910, 750));
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_bg.jpg"))); // NOI18N
+        jLabel36.setText("jLabel36");
+        kGradientPanel1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2390, 1130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1654,6 +1660,7 @@ tf14.setText(""+p);
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

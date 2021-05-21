@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager; 
 import java.sql.Statement; 
 import java.sql.ResultSet;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,6 +66,7 @@ public class GuestList extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         booked = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,7 +75,7 @@ public class GuestList extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(0, 176, 155));
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 83, 178));
+        jPanel1.setBackground(new Color(0.0f,0.26f,0.24f,0.7f));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 176, 155));
@@ -441,19 +443,19 @@ public class GuestList extends javax.swing.JFrame {
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 550, 40));
 
-        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1010));
+        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1080));
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setBackground(new Color(0.38f,0.44f,0.59f,0.5f));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel1.setForeground(new Color(0.99f, 0.92f, 0.90f, 1.0f));
         jLabel1.setText("Guest List");
-        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 240, 120));
+        jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, -20, 240, 120));
 
-        jTable1.setBackground(new java.awt.Color(0, 176, 155));
+        jTable1.setBackground(new Color(0.0f,0.26f,0.24f,1.0f));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 102)));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -471,58 +473,64 @@ public class GuestList extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setGridColor(new Color(0.0f,0.26f,0.24f,0.7f));
         jTable1.setRowHeight(30);
         jTable1.setRowMargin(5);
         jScrollPane1.setViewportView(jTable1);
         jTable1.getAccessibleContext().setAccessibleDescription("");
 
-        jPanel15.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 1150, 450));
+        jPanel15.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 1150, 430));
 
-        jButton1.setBackground(new java.awt.Color(0, 176, 155));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(0, 153, 153));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jButton1.setForeground(new Color(0.99f, 0.92f, 0.90f, 1.0f));
         jButton1.setText("Back");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 680, 200, 60));
+        jPanel15.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 330, 60));
 
-        jButton2.setBackground(new java.awt.Color(0, 176, 155));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(0, 153, 153));
+        jButton2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jButton2.setForeground(new Color(0.99f, 0.92f, 0.90f, 1.0f));
         jButton2.setText("Show List");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 680, 250, 60));
+        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 680, 540, 60));
 
-        booked.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 176, 155)));
-        booked.setForeground(new java.awt.Color(0, 176, 155));
+        booked.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 0, 0)));
+        booked.setForeground(new Color(0.99f, 0.92f, 0.90f, 1.0f));
         booked.setToolTipText("");
         booked.setDateFormatString("yyyy-MM-dd");
         booked.setFocusable(false);
+        booked.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         booked.setInheritsPopupMenu(true);
         booked.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 bookedInputMethodTextChanged(evt);
             }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
         });
-        jPanel15.add(booked, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 270, 40));
+        jPanel15.add(booked, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 270, 40));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel7.setForeground(new Color(0.99f, 0.92f, 0.90f, 1.0f));
         jLabel7.setText("Enter Date to search");
-        jPanel15.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 36, 210, 30));
+        jPanel15.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 210, 30));
 
         kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 1220, 770));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guests.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        kGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 2030, 1110));
 
         getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2310, 1120));
 
@@ -874,6 +882,7 @@ public class GuestList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

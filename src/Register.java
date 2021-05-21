@@ -49,6 +49,7 @@ public class Register extends javax.swing.JFrame {
         p2 = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -67,7 +68,7 @@ public class Register extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(41, 128, 185));
         kGradientPanel2.setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(172, 118, 108));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(41, 128, 185), 3, true));
         jPanel1.setLayout(null);
 
@@ -79,12 +80,12 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tf1);
-        tf1.setBounds(50, 230, 380, 25);
+        tf1.setBounds(310, 200, 380, 30);
 
         tf2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tf2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(41, 128, 185)));
         jPanel1.add(tf2);
-        tf2.setBounds(50, 310, 380, 25);
+        tf2.setBounds(310, 270, 380, 30);
 
         tf4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tf4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(41, 128, 185)));
@@ -94,87 +95,84 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tf4);
-        tf4.setBounds(50, 380, 380, 25);
+        tf4.setBounds(310, 340, 380, 30);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(57, 250, 20));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 195));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Staff Id.");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(-40, 200, 240, 20);
+        jLabel1.setBounds(100, 200, 240, 30);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(57, 250, 20));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 195));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Name");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(60, 270, 36, 20);
+        jLabel2.setBounds(190, 270, 50, 30);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(57, 250, 20));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 195));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Phone");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(-30, 350, 210, 20);
+        jLabel3.setBounds(110, 340, 210, 30);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(57, 250, 20));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 195));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Password");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(-50, 410, 260, 40);
+        jLabel7.setBounds(80, 410, 260, 30);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(41, 128, 185));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 195));
         jLabel4.setText("Register Here");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 60, 490, 80);
+        jLabel4.setBounds(260, 50, 270, 80);
 
-        jButton1.setBackground(new java.awt.Color(41, 128, 185));
+        jButton1.setBackground(new java.awt.Color(255, 255, 195));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("ADD");
         jButton1.setToolTipText("Add New CustomerId");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(140, 660, 200, 40);
+        jButton1.setBounds(120, 670, 250, 50);
 
-        jButton3.setBackground(new java.awt.Color(41, 128, 185));
+        jButton3.setBackground(new java.awt.Color(255, 255, 195));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("SEARCH");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(140, 720, 200, 40);
+        jButton3.setBounds(420, 670, 260, 50);
 
-        jButton2.setBackground(new java.awt.Color(41, 128, 185));
+        jButton2.setBackground(new java.awt.Color(255, 255, 195));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("GO BACK");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(140, 780, 200, 40);
+        jButton2.setBounds(220, 760, 380, 50);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(57, 250, 20));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 195));
         jLabel6.setText("Email");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(50, 560, 41, 16);
+        jLabel6.setBounds(180, 580, 60, 30);
 
         tf3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tf3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(41, 128, 185)));
@@ -184,18 +182,18 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tf3);
-        tf3.setBounds(50, 590, 390, 30);
+        tf3.setBounds(310, 570, 380, 30);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(57, 250, 20));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 195));
         jLabel8.setText("Retype Password");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(50, 490, 130, 20);
+        jLabel8.setBounds(140, 490, 260, 30);
 
         p1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         p1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(41, 128, 185)));
         jPanel1.add(p1);
-        p1.setBounds(50, 520, 380, 25);
+        p1.setBounds(310, 490, 380, 30);
 
         p2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         p2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(41, 128, 185)));
@@ -205,20 +203,23 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(p2);
-        p2.setBounds(50, 450, 380, 25);
+        p2.setBounds(310, 410, 380, 30);
 
         kGradientPanel2.add(jPanel1);
-        jPanel1.setBounds(1090, 150, 500, 850);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\New folder\\logo3.PNG")); // NOI18N
+        jPanel1.setBounds(1090, 150, 760, 850);
         kGradientPanel2.add(jLabel5);
-        jLabel5.setBounds(180, 320, 630, 640);
+        jLabel5.setBounds(370, 340, 630, 640);
 
         label1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         kGradientPanel2.add(label1);
         label1.setBounds(1600, 970, 470, 80);
 
-        getContentPane().add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -100, 2380, 1170));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/register.jpg"))); // NOI18N
+        jLabel9.setText("jLabel9");
+        kGradientPanel2.add(jLabel9);
+        jLabel9.setBounds(0, 70, 1920, 1030);
+
+        getContentPane().add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 2380, 1170));
 
         pack();
         setLocationRelativeTo(null);
@@ -398,6 +399,7 @@ label1.setText(timeStamp);
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;

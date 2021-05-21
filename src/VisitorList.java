@@ -3,6 +3,7 @@ import javax.swing.table.*;
 import java.sql.Connection; 
 import java.sql.DriverManager; 
 import java.sql.Statement; 
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
@@ -38,17 +39,6 @@ public class VisitorList extends javax.swing.JFrame {
     private void initComponents() {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -71,6 +61,17 @@ public class VisitorList extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -78,126 +79,17 @@ public class VisitorList extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         visitor = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         kGradientPanel1.setkEndColor(new java.awt.Color(150, 201, 61));
         kGradientPanel1.setkStartColor(new java.awt.Color(0, 176, 155));
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel11.setBackground(new java.awt.Color(0, 176, 155));
-        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel11MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel11MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel11MouseExited(evt);
-            }
-        });
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("RESTAURANT");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel7MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel7MouseExited(evt);
-            }
-        });
-        jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
-
-        jPanel12.setBackground(new java.awt.Color(0, 176, 155));
-        jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel12MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel12MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel12MouseExited(evt);
-            }
-        });
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel12.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
-
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("ADD GUEST");
-        jPanel12.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
-
-        jPanel13.setBackground(new java.awt.Color(0, 176, 155));
-        jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel13MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel13MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel13MouseExited(evt);
-            }
-        });
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel13.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
-
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("ADD GUEST");
-        jPanel13.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
-
-        jPanel16.setBackground(new java.awt.Color(0, 176, 155));
-        jPanel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel16MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel16MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel16MouseExited(evt);
-            }
-        });
-        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel23.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel16.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
-
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("ADD GUEST");
-        jPanel16.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
-
-        jPanel13.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 550, 40));
-
-        jPanel12.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 550, 40));
-
-        jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 550, 40));
-
-        kGradientPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 550, 40));
-
-        jPanel1.setBackground(new java.awt.Color(0, 83, 178));
+        jPanel1.setBackground(new Color(1.0f,1.0f,1.0f,0.6f));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 176, 155));
@@ -220,7 +112,7 @@ public class VisitorList extends javax.swing.JFrame {
         jLabel4.setText("LOG OUT");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 130, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 930, 270, 40));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 870, 270, 40));
 
         jPanel4.setBackground(new java.awt.Color(0, 176, 155));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -331,7 +223,7 @@ public class VisitorList extends javax.swing.JFrame {
 
         jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 550, 40));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 550, 40));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 550, 40));
 
         jPanel5.setBackground(new java.awt.Color(0, 176, 155));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -364,7 +256,7 @@ public class VisitorList extends javax.swing.JFrame {
         });
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 540, 40));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 540, 40));
 
         jPanel6.setBackground(new java.awt.Color(0, 176, 155));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -397,7 +289,7 @@ public class VisitorList extends javax.swing.JFrame {
         });
         jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 540, 40));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 540, 40));
 
         jPanel7.setBackground(new java.awt.Color(0, 176, 155));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -430,7 +322,7 @@ public class VisitorList extends javax.swing.JFrame {
         });
         jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 550, 40));
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 550, 40));
 
         jPanel14.setBackground(new java.awt.Color(0, 176, 155));
         jPanel14.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -452,16 +344,127 @@ public class VisitorList extends javax.swing.JFrame {
         jLabel5.setText("CHECK OUT");
         jPanel14.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 330, 40));
 
-        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 540, 40));
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 540, 40));
 
-        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1010));
+        jPanel11.setBackground(new java.awt.Color(0, 176, 155));
+        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel11MouseExited(evt);
+            }
+        });
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("RESTAURANT");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel7MouseExited(evt);
+            }
+        });
+        jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 320, 40));
+
+        jPanel12.setBackground(new java.awt.Color(0, 176, 155));
+        jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel12MouseExited(evt);
+            }
+        });
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel12.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("ADD GUEST");
+        jPanel12.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
+
+        jPanel13.setBackground(new java.awt.Color(0, 176, 155));
+        jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel13MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel13MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel13MouseExited(evt);
+            }
+        });
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel13.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("ADD GUEST");
+        jPanel13.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
+
+        jPanel16.setBackground(new java.awt.Color(0, 176, 155));
+        jPanel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel16MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel16MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel16MouseExited(evt);
+            }
+        });
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel16.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("ADD GUEST");
+        jPanel16.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 320, 40));
+
+        jPanel13.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 550, 40));
+
+        jPanel12.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 550, 40));
+
+        jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 550, 40));
+
+        jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 540, 40));
+
+        kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1120));
+
+        jPanel15.setBackground(new Color(0.23f,0.23f,0.23f,0.6f));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(0, 176, 155));
+        jTable1.setBackground(new Color(0.23f,0.13f,0.43f,0.6f));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 102), 2));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -487,40 +490,44 @@ public class VisitorList extends javax.swing.JFrame {
         jPanel15.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 960, 370));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 176, 155));
+        jLabel1.setForeground(new Color(0.89f, 0.82f, 0.72f,1.0f));
         jLabel1.setText("Visitor's List");
         jPanel15.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, -30, 250, 170));
 
-        jButton2.setBackground(new java.awt.Color(0, 176, 155));
+        jButton2.setBackground(new Color(0.89f, 0.82f, 0.72f,0.8f));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setForeground(new Color(0.23f,0.23f,0.23f,1.0f));
         jButton2.setText("Back");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 170, 60));
+        jPanel15.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 540, 260, 60));
 
-        jButton1.setBackground(new java.awt.Color(0, 176, 155));
+        jButton1.setBackground(new Color(0.89f, 0.82f, 0.72f,0.8f));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new Color(0.23f,0.23f,0.23f,1.0f));
         jButton1.setText("Show List");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 102), 3, true));
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 230, 60));
+        jPanel15.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 390, 60));
 
-        visitor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 176, 155)));
-        visitor.setForeground(new java.awt.Color(255, 0, 0));
+        visitor.setBackground(new Color(0.23f,0.23f,0.23f,0.65f));
         visitor.setDateFormatString("yyyy-MM-dd");
+        visitor.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jPanel15.add(visitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 62, 200, 40));
 
-        kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 1060, 630));
+        kGradientPanel1.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 1060, 630));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visitingarea.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        kGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 2110, 1130));
 
         getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2310, 1120));
 
@@ -834,6 +841,7 @@ public class VisitorList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
