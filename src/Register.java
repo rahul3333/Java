@@ -40,7 +40,6 @@ public class Register extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         tf3 = new javax.swing.JTextField();
@@ -142,19 +141,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(120, 670, 250, 50);
-
-        jButton3.setBackground(new java.awt.Color(255, 255, 195));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jButton3.setText("SEARCH");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(420, 670, 260, 50);
+        jButton1.setBounds(30, 690, 250, 50);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 195));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -166,7 +153,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(220, 760, 380, 50);
+        jButton2.setBounds(340, 690, 380, 50);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 195));
@@ -228,20 +215,20 @@ public class Register extends javax.swing.JFrame {
 public void autoID(){
 try {
             Class.forName("java.sql.Driver");
-            Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+            Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt=(Statement)con.createStatement();
-            String query="Select MAX(staffid) from reg;";
+            String query="Select MAX(id) from staff;";
             ResultSet rs=stmt.executeQuery(query);
             rs.next();
-            rs.getString("MAX(staffid)");
-            if(rs.getString("MAX(staffid)")==null)
+            rs.getString("MAX(id)");
+            if(rs.getString("MAX(id)")==null)
             {
               tf1.setText("S0001");
                 
             }
             else
             {
-             Long staffid=Long.parseLong(rs.getString("MAX(staffid)").substring(2,rs.getString("MAX(staffid)").length()));
+             Long staffid=Long.parseLong(rs.getString("MAX(id)").substring(2,rs.getString("MAX(id)").length()));
              staffid++;
              tf1.setText("S0"+String.format("%03d",staffid));
             }
@@ -260,7 +247,7 @@ try {
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           String pw =new String (p1.getPassword());
+         String pw =new String (p1.getPassword());
          String a=tf1.getText();
        String b=tf2.getText();
        String c=tf4.getText();
@@ -273,9 +260,9 @@ try {
         
 try{
     Class.forName("java.sql.Driver");
-      Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
+      Connection con=DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
     Statement stmt=con.createStatement();
-           String query="insert into reg values('"+a+"','"+d+"','"+c+"','"+b+"','"+f+"',sysdate());";
+           String query="insert into staff values('"+a+"','"+d+"','"+c+"','"+b+"','"+f+"',sysdate());";
    stmt.executeUpdate(query);
  
    JOptionPane.showMessageDialog(null,"Account has been created successfully");
@@ -306,7 +293,6 @@ catch (HeadlessException e)
      JOptionPane.showMessageDialog(null,"Please Enter Valid Phone Number");
  
  }
- 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -316,40 +302,6 @@ catch (HeadlessException e)
    obj.setVisible(true);
    this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- String staffid=tf1.getText();
-        try {
-            Class.forName("java.sql.Driver");
-            Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
-            Statement stmt=(Statement)con.createStatement();
-            String query="Select * from Reg where staffid='"+staffid+"';";
-            ResultSet rs=stmt.executeQuery(query);
-            if(rs.next())
-            {
-        String name = rs.getString("Name");
-                
-                String phone = rs.getString("PhnNo");
-                
-                String email=rs.getString("email");
-                tf2.setText(" "+name);
-                
-                tf4.setText(" "+phone);
-                
-                tf3.setText(""+email);
-            }    else
-                    JOptionPane.showMessageDialog(null,"Invalid CustomerId");
-            
-        }
-        catch (HeadlessException e) 
-        {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
@@ -390,7 +342,6 @@ label1.setText(timeStamp);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
