@@ -12,12 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class AmtCalculator extends javax.swing.JFrame {
+
     String roomNo, type, name, days, phoneNo, checkInDate, checkOutDate, bookingDate, occupants;
-    double roomTotal = 0, finalTotal = 0, gst=0;
+    double roomTotal = 0, finalTotal = 0, gst = 0;
     SimpleDateFormat a1 = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     String today = a1.format(date);
-    
+
     public AmtCalculator() {
         initComponents();
         tf1.setVisible(false);
@@ -30,17 +31,16 @@ public class AmtCalculator extends javax.swing.JFrame {
         ta1.setVisible(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-    
-    void getGuestList()
-    {
+
+    void getGuestList() {
         combo1.removeAllItems();
         try {
             Class.forName("java.sql.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = con.createStatement();
-            ResultSet r = stmt.executeQuery("SELECT * FROM guest WHERE '"+today+"' BETWEEN CheckInDate AND CheckOutDate AND CheckedOut = 0");
+            ResultSet r = stmt.executeQuery("SELECT * FROM guest WHERE '" + today + "' BETWEEN CheckInDate AND CheckOutDate AND CheckedOut = 0");
             while (r.next()) {
-                combo1.addItem(r.getString("RoomNO")+"("+r.getString("Type")+" )- "+r.getString("Name"));
+                combo1.addItem(r.getString("RoomNO") + "(" + r.getString("Type") + " )- " + r.getString("Name"));
             }
             conn.close();
         } catch (ClassNotFoundException | SQLException e) {
@@ -49,6 +49,7 @@ public class AmtCalculator extends javax.swing.JFrame {
             System.exit(0);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -89,7 +90,6 @@ public class AmtCalculator extends javax.swing.JFrame {
         ta1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         ta1.setForeground(new java.awt.Color(255, 255, 255));
         ta1.setRows(5);
-        ta1.setText("\n");
         ta1.setToolTipText("");
         ta1.setBorder(null);
         jScrollPane1.setViewportView(ta1);
@@ -234,21 +234,20 @@ public class AmtCalculator extends javax.swing.JFrame {
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-    String resbill = "0";
-
-    void billofRestaurant() {
-        String a = (String) combo1.getSelectedItem();
+    
+    int billofRestaurant() {
+        int resBill = 0;
+        System.out.println("Function Bill Called");
+        System.out.println(roomNo);
         try {
             Class.forName("java.sql.Driver");
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "Select * from restaurant where roomno='" + a + "';";
-
+            String query = "SELECT * FROM `restaurant` WHERE Roomno = "+roomNo+";";
             ResultSet rs = stmt.executeQuery(query);
-
-            if (rs.next()) {
-                resbill = rs.getString("resbill");
-
+            while(rs.next()) {
+                System.out.println("Something");
+                resBill = resBill + Integer.parseInt(rs.getString("resbill"));
             }
 
         } catch (HeadlessException e) {
@@ -258,9 +257,9 @@ public class AmtCalculator extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        return resBill;
     }
 
-    
     private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
         String selectedRoom = (String) combo1.getSelectedItem();
         selectedRoom = selectedRoom.substring(0, 3);
@@ -311,7 +310,7 @@ public class AmtCalculator extends javax.swing.JFrame {
     private void combo1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combo1MouseEntered
 
     }//GEN-LAST:event_combo1MouseEntered
-    
+
     private void showBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBillActionPerformed
         jButton5.setVisible(true);
         ta1.setVisible(true);
@@ -323,15 +322,17 @@ public class AmtCalculator extends javax.swing.JFrame {
         } else if (type.equals("PLATINUM")) {
             roomTotal = 5000 * day;
         }
-        gst = (roomTotal/100)*18;
-        finalTotal = roomTotal+gst;
+        gst = (roomTotal / 100) * 18;
+        int resBill = billofRestaurant();
+        finalTotal = roomTotal + gst + resBill;
 
         ta1.setText(
-                "Mr/Mrs " + name + "\n" +
-                "Room(" +type+ ") * " +days+ " = " +roomTotal+ "\n" +
-                "CGST(9%) = " +gst/2+ "\n" +
-                "SGST(9%) = " +gst/2+ "\n" +
-                "Total = " +finalTotal
+                "Mr/Mrs " + name + "\n"
+                + "Room(" + type + ") * " + days + " = " + roomTotal + "\n"
+                + "CGST(9%) = " + gst / 2 + "\n"
+                + "SGST(9%) = " + gst / 2 + "\n"
+                + "Restraunt Bill = " + resBill + "\n"
+                + "Total = " + finalTotal
         );
 
     }//GEN-LAST:event_showBillActionPerformed
@@ -339,7 +340,7 @@ public class AmtCalculator extends javax.swing.JFrame {
     private void combo1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combo1MouseExited
 
     }//GEN-LAST:event_combo1MouseExited
-    
+
     void updateCheckOutStatus() {
         String n = (String) combo1.getSelectedItem();
         String m = tf2.getText();
@@ -347,21 +348,22 @@ public class AmtCalculator extends javax.swing.JFrame {
             Class.forName("java.sql.DriverManager");
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "UPDATE guest SET CheckedOut = 1 WHERE RoomNO = '"+roomNo+"' AND CheckInDate ='"+checkInDate+"';";
+            String query = "UPDATE guest SET CheckedOut = 1 WHERE RoomNO = '" + roomNo + "' AND CheckInDate ='" + checkInDate + "';";
+            stmt.executeUpdate(query);
+            query = "DELETE FROM `restaurant` WHERE Roomno = '" + roomNo + "';";
             stmt.executeUpdate(query);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
-    void generateBill()
-    {
+
+    void generateBill() {
         try {
             Class.forName("java.sql.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = con.createStatement();
-            String query = "INSERT INTO bill VALUES('" + roomNo + "','" + name + "','"  + checkInDate + "','" + checkOutDate + "','" + roomTotal + "','" + gst + "','" + finalTotal + "');";
+            String query = "INSERT INTO bill VALUES('" + roomNo + "','" + name + "','" + checkInDate + "','" + checkOutDate + "','" + roomTotal + "','" + gst + "','" + finalTotal + "');";
             stmt.executeUpdate(query);
 
             JOptionPane.showMessageDialog(null, "Thanks ' RECORD ADDED'");
@@ -373,9 +375,8 @@ public class AmtCalculator extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        
+
     }
-    
 
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -384,8 +385,8 @@ public class AmtCalculator extends javax.swing.JFrame {
         tf1.setText("");
         tf2.setText("");
         tf3.setText("");
-        combo1.setSelectedIndex(-1);
         ta1.setText("");
+        combo1.setSelectedIndex(-1);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void tf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf3ActionPerformed

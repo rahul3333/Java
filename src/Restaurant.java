@@ -1,3 +1,4 @@
+
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -5,9 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 public class Restaurant extends javax.swing.JFrame {
 
@@ -15,13 +18,37 @@ public class Restaurant extends javax.swing.JFrame {
      * Creates new form Restaurant
      */
     public Restaurant() {
-     
-        
+
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         jButton6.setVisible(false);
         roomcombo.setVisible(false);
         jLabel33.setVisible(false);
+    }
+
+    public void getRooms() {
+        try {
+            roomcombo.removeAllItems();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date today = new Date();
+            String dateToday = dateFormat.format(today);
+            Class.forName("java.sql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM guest WHERE '" + dateToday + "' BETWEEN CheckInDate AND CheckOutDate;");
+            if (!resultSet.isBeforeFirst()) {
+                roomcombo.addItem("Guests Not Found");
+            } else {
+                while (resultSet.next()) {
+                    roomcombo.addItem(resultSet.getString("roomno"));
+                }
+            }
+            conn.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed to Connect to Database", "Error Connection", JOptionPane.WARNING_MESSAGE);
+            System.exit(0);
+        }
+
     }
 
     /**
@@ -112,8 +139,6 @@ public class Restaurant extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel32 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
         roomcombo = new javax.swing.JComboBox<>();
@@ -498,7 +523,7 @@ public class Restaurant extends javax.swing.JFrame {
 
         kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 1130));
 
-        jPanel2.setBackground(new Color(0.41f,0.33f,0.29f,0.6f));
+        jPanel2.setBackground(new Color(0.41f,0.33f,0.29f,1.0f));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -715,7 +740,7 @@ public class Restaurant extends javax.swing.JFrame {
                 check1ActionPerformed(evt);
             }
         });
-        jPanel2.add(check1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        jPanel2.add(check1, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 40, 160, -1));
 
         jButton6.setBackground(new java.awt.Color(0, 176, 155));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -728,7 +753,7 @@ public class Restaurant extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 220, 50));
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 670, 220, 50));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -869,22 +894,12 @@ public class Restaurant extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 69, 400, 30));
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Phone");
-        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 176, 155));
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 129, 400, 30));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 400, 30));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Roomno");
-        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
+        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
 
         total.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(150, 201, 61)));
         total.addActionListener(new java.awt.event.ActionListener() {
@@ -902,12 +917,12 @@ public class Restaurant extends javax.swing.JFrame {
                 roomcomboActionPerformed(evt);
             }
         });
-        jPanel2.add(roomcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 400, -1));
+        jPanel2.add(roomcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 400, -1));
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Enter Name");
-        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
         kGradientPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 910, 750));
 
@@ -938,32 +953,32 @@ public class Restaurant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        StaffLogin obj=new StaffLogin ();
+        StaffLogin obj = new StaffLogin();
         obj.setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-        jPanel3.setBackground(new java.awt.Color(0,216,155));        // TODO add your handling code here:
+        jPanel3.setBackground(new java.awt.Color(0, 216, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-        jPanel3.setBackground(new java.awt.Color(0,176,155));
+        jPanel3.setBackground(new java.awt.Color(0, 176, 155));
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        Restaurant obj=new Restaurant();
+        Restaurant obj = new Restaurant();
         obj.setVisible(true);
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-        jPanel4.setBackground(new java.awt.Color(0,216,155));
+        jPanel4.setBackground(new java.awt.Color(0, 216, 155));
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
-        jPanel4.setBackground(new java.awt.Color(0,176,155));         // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(0, 176, 155));         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseExited
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
@@ -1003,134 +1018,134 @@ public class Restaurant extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel8MouseExited
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-       Restaurant obj=new Restaurant();
+        Restaurant obj = new Restaurant();
         obj.setVisible(true);
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        jPanel4.setBackground(new java.awt.Color(0,216,155));        // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(0, 216, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MouseEntered
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        jPanel4.setBackground(new java.awt.Color(0,176,155));        // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(0, 176, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        VisitorList obj=new VisitorList();
+        VisitorList obj = new VisitorList();
         obj.setVisible(true);
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        jPanel5.setBackground(new java.awt.Color(0,216,155));        // TODO add your handling code here:
+        jPanel5.setBackground(new java.awt.Color(0, 216, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        jPanel5.setBackground(new java.awt.Color(0,176,155));        // TODO add your handling code here:
+        jPanel5.setBackground(new java.awt.Color(0, 176, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        VisitorList obj=new VisitorList();
+        VisitorList obj = new VisitorList();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        jPanel5.setBackground(new java.awt.Color(0,216,155));
+        jPanel5.setBackground(new java.awt.Color(0, 216, 155));
     }//GEN-LAST:event_jPanel5MouseEntered
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel5.setBackground(new java.awt.Color(0,176,155));        // TODO add your handling code here:
+        jPanel5.setBackground(new java.awt.Color(0, 176, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MouseExited
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        NewVisitor obj=new NewVisitor();
+        NewVisitor obj = new NewVisitor();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
-        jPanel6.setBackground(new java.awt.Color(0,216,155));
+        jPanel6.setBackground(new java.awt.Color(0, 216, 155));
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
-        jPanel6.setBackground(new java.awt.Color(0,176,155));
+        jPanel6.setBackground(new java.awt.Color(0, 176, 155));
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel10MouseExited
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        NewVisitor obj=new NewVisitor();
+        NewVisitor obj = new NewVisitor();
         obj.setVisible(true);
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        jPanel6.setBackground(new java.awt.Color(0,216,155));
+        jPanel6.setBackground(new java.awt.Color(0, 216, 155));
     }//GEN-LAST:event_jPanel6MouseEntered
 
     private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        jPanel6.setBackground(new java.awt.Color(0,176,155));        // TODO add your handling code here:
+        jPanel6.setBackground(new java.awt.Color(0, 176, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseExited
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        NewGuest obj=new NewGuest();
+        NewGuest obj = new NewGuest();
         obj.setVisible(true);
         this.dispose();         // TODO add your handling code here:
 
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
-        jPanel7.setBackground(new java.awt.Color(0,216,155));
+        jPanel7.setBackground(new java.awt.Color(0, 216, 155));
     }//GEN-LAST:event_jLabel12MouseEntered
 
     private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
-        jPanel7.setBackground(new java.awt.Color(0,176,155));  // TODO add your handling code here:
+        jPanel7.setBackground(new java.awt.Color(0, 176, 155));  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel12MouseExited
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        NewGuest obj=new NewGuest();
+        NewGuest obj = new NewGuest();
         obj.setVisible(true);
         this.dispose();          // TODO add your handling code here:
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        jPanel7.setBackground(new java.awt.Color(0,216,155));   // TODO add your handling code here:
+        jPanel7.setBackground(new java.awt.Color(0, 216, 155));   // TODO add your handling code here:
     }//GEN-LAST:event_jPanel7MouseEntered
 
     private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        jPanel7.setBackground(new java.awt.Color(0,176,155));     // TODO add your handling code here:
+        jPanel7.setBackground(new java.awt.Color(0, 176, 155));     // TODO add your handling code here:
     }//GEN-LAST:event_jPanel7MouseExited
 
     private void jPanel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseClicked
-        AmtCalculator obj=new AmtCalculator();
+        AmtCalculator obj = new AmtCalculator();
         obj.setVisible(true);
         this.dispose();    // TODO add your handling code here:
     }//GEN-LAST:event_jPanel14MouseClicked
 
     private void jPanel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseEntered
-        jPanel14.setBackground(new java.awt.Color(0,216,155));  // TODO add your handling code here:
+        jPanel14.setBackground(new java.awt.Color(0, 216, 155));  // TODO add your handling code here:
     }//GEN-LAST:event_jPanel14MouseEntered
 
     private void jPanel14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseExited
-        jPanel14.setBackground(new java.awt.Color(0,176,155));   // TODO add your handling code here:
+        jPanel14.setBackground(new java.awt.Color(0, 176, 155));   // TODO add your handling code here:
     }//GEN-LAST:event_jPanel14MouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        GuestList obj=new GuestList();
+        GuestList obj = new GuestList();
         obj.setVisible(true);
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        jPanel11.setBackground(new java.awt.Color(0,216,155));
+        jPanel11.setBackground(new java.awt.Color(0, 216, 155));
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
-        jPanel11.setBackground(new java.awt.Color(0,176,155));         // TODO add your handling code here:
+        jPanel11.setBackground(new java.awt.Color(0, 176, 155));         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jPanel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel15MouseClicked
@@ -1170,17 +1185,17 @@ public class Restaurant extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel12MouseExited
 
     private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
-        GuestList obj=new GuestList();
+        GuestList obj = new GuestList();
         obj.setVisible(true);
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel11MouseClicked
 
     private void jPanel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseEntered
-        jPanel11.setBackground(new java.awt.Color(0,216,155));        // TODO add your handling code here:
+        jPanel11.setBackground(new java.awt.Color(0, 216, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel11MouseEntered
 
     private void jPanel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseExited
-        jPanel11.setBackground(new java.awt.Color(0,176,155));        // TODO add your handling code here:
+        jPanel11.setBackground(new java.awt.Color(0, 176, 155));        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel11MouseExited
 
     private void tf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf1ActionPerformed
@@ -1190,129 +1205,107 @@ public class Restaurant extends javax.swing.JFrame {
     private void tf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf2ActionPerformed
- ArrayList<Double> arr = new ArrayList<Double>(10);
+    ArrayList<Double> arr = new ArrayList<Double>(10);
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double tot=0.0;  
-        double a=Double.parseDouble(tf1.getText());
-          double b=Double.parseDouble(tf2.getText());
-          tot=a*b;
-           arr.add(tot);
-             tf1.setText("1");
-           tf2.setText("");
-          
-         
+        double tot = 0.0;
+        double a = Double.parseDouble(tf1.getText());
+        double b = Double.parseDouble(tf2.getText());
+        tot = a * b;
+        arr.add(tot);
+        tf1.setText("1");
+        tf2.setText("");
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
-int a;
-double p = 0;
-a=combo1.getSelectedIndex();
-if(a==0){
-p=315;
-}
-else if(a==1){
-p=295;
-}
-else if(a==2){
-p=290;
-}
-else if(a==3){
-p=298;
-}
-else if(a==4){
-p=315;
-}
-else if(a==5){
-p=305;
-}
-else if(a==6){
-p=285;
-}else if(a==7){
-p=320;
-}else if(a==8){
-p=250;
-}else if(a==9){
-p=200;
-}
-else if(a==10){
-p=210;
-}else if(a==11){
-p=265;
-}else if(a==12){
-p=200;
-}
-tf2.setText(""+p);
+        int a;
+        double p = 0;
+        a = combo1.getSelectedIndex();
+        if (a == 0) {
+            p = 315;
+        } else if (a == 1) {
+            p = 295;
+        } else if (a == 2) {
+            p = 290;
+        } else if (a == 3) {
+            p = 298;
+        } else if (a == 4) {
+            p = 315;
+        } else if (a == 5) {
+            p = 305;
+        } else if (a == 6) {
+            p = 285;
+        } else if (a == 7) {
+            p = 320;
+        } else if (a == 8) {
+            p = 250;
+        } else if (a == 9) {
+            p = 200;
+        } else if (a == 10) {
+            p = 210;
+        } else if (a == 11) {
+            p = 265;
+        } else if (a == 12) {
+            p = 200;
+        }
+        tf2.setText("" + p);
 
 
-
-
-       
- 
- 
     }//GEN-LAST:event_combo1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-  String Name=jTextField1.getText();
-       String PhnNo=jTextField2.getText();
-       String Roomno="NULL";
-       
-         double sum=0.0;
-        for(Double number:arr){
-     sum=sum+number;
-     total.setText(""+sum);
+        String Name = jTextField1.getText();
+        String Roomno = "NULL";
+
+        double sum = 0.0;
+        for (Double number : arr) {
+            sum = sum + number;
+            total.setText("" + sum);
 
         }
-        if (Name.isEmpty() && PhnNo.isEmpty()){
-        JOptionPane.showMessageDialog(null,"Please Fill above data Properly");}
-        else{
-        try
-        {
+        try {
             Class.forName("java.sql.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
-            Statement stmt=con.createStatement();
-            String query="Insert into restaurant values('"+(Name)+"','"+(Roomno)+"','"+(sum)+"');";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
+            Statement stmt = con.createStatement();
+            String query = "Insert into restaurant values('" + (Name) + "','" + (Roomno) + "','" + (sum) + "');";
             stmt.executeUpdate(query);
-            JOptionPane.showMessageDialog(null,"Thanks ");
+            JOptionPane.showMessageDialog(null, "Thanks ");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error Connection", JOptionPane.WARNING_MESSAGE);
         }
-            catch (Exception e)
-            {
-               JOptionPane.showMessageDialog(null,e.getMessage(),"Error Connection", JOptionPane.WARNING_MESSAGE); 
-            }
-        }
-           
-           
-           
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- double tot=0.0;  
-        double a=Double.parseDouble(tf3.getText());
-          double b=Double.parseDouble(tf4.getText());
-          tot=a*b;
-           arr.add(tot); 
-           tf3.setText("1");
-           tf4.setText("");
+        double tot = 0.0;
+        double a = Double.parseDouble(tf3.getText());
+        double b = Double.parseDouble(tf4.getText());
+        tot = a * b;
+        arr.add(tot);
+        tf3.setText("1");
+        tf4.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-double tot=0.0;  
-        double a=Double.parseDouble(tf5.getText());
-          double b=Double.parseDouble(tf6.getText());
-          tot=a*b;
-           arr.add(tot); 
-           tf5.setText("1");
-           tf6.setText("");
+        double tot = 0.0;
+        double a = Double.parseDouble(tf5.getText());
+        double b = Double.parseDouble(tf6.getText());
+        tot = a * b;
+        arr.add(tot);
+        tf5.setText("1");
+        tf6.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-double tot=0.0;  
-        double a=Double.parseDouble(tf7.getText());
-          double b=Double.parseDouble(tf8.getText());
-          tot=a*b;
-           arr.add(tot); 
-           tf7.setText("1");
-           tf8.setText("");
+        double tot = 0.0;
+        double a = Double.parseDouble(tf7.getText());
+        double b = Double.parseDouble(tf8.getText());
+        tot = a * b;
+        arr.add(tot);
+        tf7.setText("1");
+        tf8.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void tf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf3ActionPerformed
@@ -1320,231 +1313,199 @@ double tot=0.0;
     }//GEN-LAST:event_tf3ActionPerformed
 
     private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
-      int a;
-      double p=0;
-      a=combo2.getSelectedIndex();
-      if(a==0){
-      p=17;
-      }
-      else if(a==1){
-      p=22;
-      }
-       else if(a==2){
-      p=55;
-      }
-       else if(a==3){
-      p=65;
-      }
-       else if(a==4){
-      p=75;
-      }
-       else if(a==5){
-      p=75;
-      }
-       else if(a==6){
-      p=65;
-      }
-      tf4.setText(""+p);
+        int a;
+        double p = 0;
+        a = combo2.getSelectedIndex();
+        if (a == 0) {
+            p = 17;
+        } else if (a == 1) {
+            p = 22;
+        } else if (a == 2) {
+            p = 55;
+        } else if (a == 3) {
+            p = 65;
+        } else if (a == 4) {
+            p = 75;
+        } else if (a == 5) {
+            p = 75;
+        } else if (a == 6) {
+            p = 65;
+        }
+        tf4.setText("" + p);
     }//GEN-LAST:event_combo2ActionPerformed
 
     private void combo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo3ActionPerformed
-int a;
-double p=0;
-a=combo3.getSelectedIndex();
-if(a==0){
-p=90;
-}
-else if(a==1){
-p=100;
-}
-else if(a==2){
-p=120;
-}
-else if (a==3){
-p=150;
-}
-tf6.setText(""+p);
+        int a;
+        double p = 0;
+        a = combo3.getSelectedIndex();
+        if (a == 0) {
+            p = 90;
+        } else if (a == 1) {
+            p = 100;
+        } else if (a == 2) {
+            p = 120;
+        } else if (a == 3) {
+            p = 150;
+        }
+        tf6.setText("" + p);
     }//GEN-LAST:event_combo3ActionPerformed
 
     private void combo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo4ActionPerformed
         int a;
-double p=0;
-a=combo4.getSelectedIndex();
-if(a==0){
-p=300;
-}
-else if(a==1){
-p=360;
-}
-else if(a==2){
-p=370;
-}
-else if(a==3){
-p=365;
-}
-else if(a==4){
-p=450;
-}
-else if(a==5){
-p=380;
-}
-tf8.setText(""+p);
+        double p = 0;
+        a = combo4.getSelectedIndex();
+        if (a == 0) {
+            p = 300;
+        } else if (a == 1) {
+            p = 360;
+        } else if (a == 2) {
+            p = 370;
+        } else if (a == 3) {
+            p = 365;
+        } else if (a == 4) {
+            p = 450;
+        } else if (a == 5) {
+            p = 380;
+        }
+        tf8.setText("" + p);
     }//GEN-LAST:event_combo4ActionPerformed
 
     private void check1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check1ActionPerformed
-if(check1.isSelected()){
-jButton2.setVisible(false);
-jButton6.setVisible(true);
-roomcombo.setVisible(true);
-jLabel33.setVisible(true);
-}   
-else{
-jButton2.setVisible(true);
-jButton6.setVisible(false);
-roomcombo.setVisible(false);
-jLabel33.setVisible(false);
-}
+        if (check1.isSelected()) {
+            jButton2.setVisible(false);
+            jButton6.setVisible(true);
+            roomcombo.setVisible(true);
+            jLabel33.setVisible(true);
+            jTextField1.setEnabled(false);
+            jTextField1.setVisible(false);
+            jLabel34.setVisible(false);
+            roomcombo.removeAllItems();
+            getRooms();
+        } else {
+            jButton2.setVisible(true);
+            jButton6.setVisible(false);
+            roomcombo.setVisible(false);
+            jLabel33.setVisible(false);
+            jTextField1.setEnabled(true);
+            jTextField1.setVisible(true);
+            jLabel34.setVisible(true);
+        }
 
     }//GEN-LAST:event_check1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-String Name=jTextField1.getText();
-       String PhnNo=jTextField2.getText();
-       String Roomno=(String) roomcombo.getSelectedItem();
-       
-         double sum=0.0;
-        for(Double number:arr){
-     sum=sum+number;
-     total.setText(""+sum);
+        String Name = jTextField1.getText();
+        String Roomno = (String) roomcombo.getSelectedItem();
+
+        double sum = 0.0;
+        for (Double number : arr) {
+            sum = sum + number;
+            total.setText("" + sum);
         }
-if (Name.isEmpty() && PhnNo.isEmpty()){
-        JOptionPane.showMessageDialog(null,"Please Fill above data Properly");}
-else
-        {
-                
-        try
-        {
+        try {
             Class.forName("java.sql.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/projectwork","root","1234");
-            Statement stmt=con.createStatement();
-            String query="Insert into restaurant values('"+(Name)+"','"+(Roomno)+"','"+(sum)+"');";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
+            Statement stmt = con.createStatement();
+            String query = "Insert into restaurant values('" + (Name) + "','" + (Roomno) + "','" + (sum) + "');";
             stmt.executeUpdate(query);
-            JOptionPane.showMessageDialog(null,"Thanks Your Bill has been added");
+            JOptionPane.showMessageDialog(null, "Thanks Your Bill has been added");
             jTextField1.setText("");
-             jTextField2.setText("");
-             total.setText("");
+            total.setText("");
+        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error Connection", JOptionPane.WARNING_MESSAGE);
         }
-            catch (HeadlessException | ClassNotFoundException | SQLException e)
-            {
-               JOptionPane.showMessageDialog(null,e.getMessage(),"Error Connection", JOptionPane.WARNING_MESSAGE); 
-            } 
-        }
- 
+
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void combo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo5ActionPerformed
-int a;
-double p=0;
-a=combo5.getSelectedIndex();
-if(a==0){
-p=200;
-}
-else if(a==1){
-p=250;
-}
-else if(a==2){
-p=250;
-}
-else if (a==3){
-p=300;
-}
-tf10.setText(""+p);
+        int a;
+        double p = 0;
+        a = combo5.getSelectedIndex();
+        if (a == 0) {
+            p = 200;
+        } else if (a == 1) {
+            p = 250;
+        } else if (a == 2) {
+            p = 250;
+        } else if (a == 3) {
+            p = 300;
+        }
+        tf10.setText("" + p);
     }//GEN-LAST:event_combo5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-double tot=0.0;  
-        double a=Double.parseDouble(tf9.getText());
-          double b=Double.parseDouble(tf10.getText());
-          tot=a*b;
-           arr.add(tot); 
-           tf9.setText("1");
-           tf10.setText("");
+        double tot = 0.0;
+        double a = Double.parseDouble(tf9.getText());
+        double b = Double.parseDouble(tf10.getText());
+        tot = a * b;
+        arr.add(tot);
+        tf9.setText("1");
+        tf10.setText("");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void combo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo6ActionPerformed
-int a;
-double p=0;
-a=combo6.getSelectedIndex();
-if(a==0){
-p=460;
-}
-else if(a==1){
-p=350;
-}
-else if(a==2){
-p=350;
-}
-else if(a==3){
-p=350;
-}
-else if(a==4){
-p=390;
-}
-else if(a==5){
-p=450;
-}
-tf12.setText(""+p);
+        int a;
+        double p = 0;
+        a = combo6.getSelectedIndex();
+        if (a == 0) {
+            p = 460;
+        } else if (a == 1) {
+            p = 350;
+        } else if (a == 2) {
+            p = 350;
+        } else if (a == 3) {
+            p = 350;
+        } else if (a == 4) {
+            p = 390;
+        } else if (a == 5) {
+            p = 450;
+        }
+        tf12.setText("" + p);
     }//GEN-LAST:event_combo6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-double tot=0.0;  
-        double a=Double.parseDouble(tf11.getText());
-          double b=Double.parseDouble(tf12.getText());
-          tot=a*b;
-           arr.add(tot); 
-           tf11.setText("1");
-           tf12.setText("");       
+        double tot = 0.0;
+        double a = Double.parseDouble(tf11.getText());
+        double b = Double.parseDouble(tf12.getText());
+        tot = a * b;
+        arr.add(tot);
+        tf11.setText("1");
+        tf12.setText("");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void combo7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo7ActionPerformed
-int a;
-double p=0;
-a=combo7.getSelectedIndex();
-if(a==0){
-p=200;
-}
-else if(a==1){
-p=200;
-}
-else if(a==2){
-p=200;
-}
-else if(a==3){
-p=200;
-}
-else if(a==4){
-p=210;
-}
-else if(a==5){
-p=200;
-}
-else if(a==6){
-p=180;
-}
-else if(a==7){
-p=180;
-}
-tf14.setText(""+p);
+        int a;
+        double p = 0;
+        a = combo7.getSelectedIndex();
+        if (a == 0) {
+            p = 200;
+        } else if (a == 1) {
+            p = 200;
+        } else if (a == 2) {
+            p = 200;
+        } else if (a == 3) {
+            p = 200;
+        } else if (a == 4) {
+            p = 210;
+        } else if (a == 5) {
+            p = 200;
+        } else if (a == 6) {
+            p = 180;
+        } else if (a == 7) {
+            p = 180;
+        }
+        tf14.setText("" + p);
     }//GEN-LAST:event_combo7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-      double tot=0.0;  
-        double a=Double.parseDouble(tf13.getText());
-          double b=Double.parseDouble(tf14.getText());
-          tot=a*b;
-           arr.add(tot); 
-           tf13.setText("1");
-           tf14.setText("");     
+        double tot = 0.0;
+        double a = Double.parseDouble(tf13.getText());
+        double b = Double.parseDouble(tf14.getText());
+        tot = a * b;
+        arr.add(tot);
+        tf13.setText("1");
+        tf14.setText("");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
@@ -1657,7 +1618,6 @@ tf14.setText(""+p);
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
@@ -1683,7 +1643,6 @@ tf14.setText(""+p);
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JComboBox<String> roomcombo;
     private javax.swing.JTextField tf1;
