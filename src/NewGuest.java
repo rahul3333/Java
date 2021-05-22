@@ -361,31 +361,29 @@ public class NewGuest extends javax.swing.JFrame {
             }
 
             if (PhnNo.length() >= 10 && PhnNo.length() <= 11) {
-                String query = "INSERT INTO guest (`RoomNo`, `Name`, `Occupants`, `Days`, `Type`, `PhoneNo`, `CheckInDate`, `CheckOutDate`, `BookingDate`) VALUES('" + (RoomNo) + "','" + (Name) + "','" + (NoOfP) + "','" + (NoOfDays) + "','" + (type) + "','" + (PhnNo) + "','" + (dateCheckIn) + "','" + (dateCheckOut) + "',sysdate());";
-                stmt.executeUpdate(query);
-                //updatestatus(RoomNo,type);
-                JOptionPane.showMessageDialog(null, "Guest Inserted");
+                if(Integer.parseInt(NoOfP) <=2 && Integer.parseInt(NoOfP) >0)
+                {
+                    String query = "INSERT INTO guest (`RoomNo`, `Name`, `Occupants`, `Days`, `Type`, `PhoneNo`, `CheckInDate`, `CheckOutDate`, `BookingDate`) VALUES('" + (RoomNo) + "','" + (Name) + "','" + (NoOfP) + "','" + (NoOfDays) + "','" + (type) + "','" + (PhnNo) + "','" + (dateCheckIn) + "','" + (dateCheckOut) + "',sysdate());";
+                    stmt.executeUpdate(query);
+                    //updatestatus(RoomNo,type);
+                    JOptionPane.showMessageDialog(null, "Guest Inserted");
+                    NewVisitor obj=new NewVisitor(RoomNo, Integer.parseInt(NoOfP),dateCheckIn);
+                    obj.setVisible(true);
+                    this.dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Invalid Number of Guest");
+                }
+                
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid number");
+                JOptionPane.showMessageDialog(null, "Invalid Phone Number");
             }
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "error");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error Connection", JOptionPane.WARNING_MESSAGE);
         }
-        jTextField1.setText(" ");
-        jTextField2.setText(" ");
-        jTextField3.setText(" ");
-
-        jTextField6.setText(" ");
-
-        radioButtonGold.setSelected(false);
-        radioButtonSilver.setSelected(false);
-        combo1.removeAllItems();
-
-        radioButtonPlatinum.setSelected(false);
-
-
     }//GEN-LAST:event_bookNewRoomActionPerformed
 
         private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
