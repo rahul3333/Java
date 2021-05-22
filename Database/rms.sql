@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2021 at 06:38 PM
+-- Generation Time: May 22, 2021 at 08:39 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -42,7 +42,8 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`RoomNo`, `Name`, `CheckInDate`, `CheckOutDate`, `RoomTotal`, `GST`, `Total`) VALUES
-('101', 'Saksham', '2021-05-20', '2021-05-21', 8000, 1440, 9440);
+('101', 'Saksham', '2021-05-20', '2021-05-21', 8000, 1440, 9440),
+('302', 'Sarthak', '2021-05-20', '2021-05-25', 25000, 4500, 31910);
 
 -- --------------------------------------------------------
 
@@ -95,15 +96,16 @@ CREATE TABLE `guest` (
 --
 
 INSERT INTO `guest` (`RoomNo`, `Name`, `Occupants`, `Days`, `Type`, `PhoneNo`, `CheckInDate`, `CheckOutDate`, `BookingDate`, `CheckedOut`) VALUES
-('101', 'Saksham', 2, 4, 'SILVER', '8112273369', '2021-05-20', '2021-05-21', '2021-05-04 00:00:00', 1),
-('102', 'Saksham', 2, 4, 'SILVER', '8112273369', '2021-05-20', '2021-05-22', '2021-05-04 00:00:00', 0),
-('103', 'Rajesh Jain', 2, 1, 'SILVER', ' 8114468402', '2021-05-20', '2021-05-21', '2021-05-20 17:17:36', 0),
-('103', 'Barkha', 2, 4, 'SILVER', '8112273369', '2021-05-25', '2021-05-28', '2021-05-04 00:00:00', 0),
-('201', 'Sarthak', 3, 5, 'GOLD', '9782927533', '2021-05-20', '2021-05-25', '2021-05-18 13:55:46', 0),
-('202', 'Saksham', 2, 4, 'GOLD', '8112273369', '2021-05-20', '2021-05-25', '2021-05-04 00:00:00', 0),
-('203', 'Saksham', 2, 4, 'GOLD', '8112273369', '2021-05-20', '2021-05-21', '2021-05-04 00:00:00', 0),
-('301', 'Barkha', 2, 4, 'PLATINUM', '8112273369', '2021-05-20', '2021-05-28', '2021-05-04 00:00:00', 0),
-('302', 'Sarthak', 3, 5, 'PLATINUM', '9782927533', '2021-05-20', '2021-05-25', '2021-05-18 13:55:46', 0);
+('101', 'Saksham Jain', 2, 4, 'SILVER', '8112273369', '2021-05-20', '2021-05-21', '2021-05-04 00:00:00', 1),
+('102', 'Saksham Jain', 2, 4, 'SILVER', '8112273369', '2021-05-20', '2021-05-22', '2021-05-04 00:00:00', 0),
+('103', 'Sushmitha S', 2, 1, 'SILVER', ' 8114468402', '2021-05-20', '2021-05-21', '2021-05-20 17:17:36', 0),
+('103', 'Jeet Patel', 2, 4, 'SILVER', '8112273369', '2021-05-25', '2021-05-28', '2021-05-04 00:00:00', 0),
+('104', 'Rahul Dewan', 2, 1, 'SILVER', '9810978199', '2021-05-22', '2021-05-23', '2021-05-22 10:38:10', 0),
+('201', 'Jeet Patel', 3, 5, 'GOLD', '9782927533', '2021-05-20', '2021-05-25', '2021-05-18 13:55:46', 0),
+('202', 'Rahul Dewan', 2, 4, 'GOLD', '8112273369', '2021-05-20', '2021-05-25', '2021-05-04 00:00:00', 0),
+('203', 'Saksham Jain', 2, 4, 'GOLD', '8112273369', '2021-05-20', '2021-05-21', '2021-05-04 00:00:00', 0),
+('301', 'Nandini Agarwal', 2, 4, 'PLATINUM', '8112273369', '2021-05-20', '2021-05-28', '2021-05-04 00:00:00', 0),
+('302', 'Sushmitha S', 3, 5, 'PLATINUM', '9782927533', '2021-05-20', '2021-05-25', '2021-05-18 13:55:46', 1);
 
 -- --------------------------------------------------------
 
@@ -123,14 +125,24 @@ CREATE TABLE `reg` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resturant`
+-- Table structure for table `restaurant`
 --
 
-CREATE TABLE `resturant` (
-  `name` char(50) DEFAULT NULL,
-  `Roomno` varchar(6) DEFAULT NULL,
-  `resbill` float DEFAULT NULL
+CREATE TABLE `restaurant` (
+  `name` char(50) NOT NULL,
+  `Roomno` varchar(6) NOT NULL,
+  `resbill` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `restaurant`
+--
+
+INSERT INTO `restaurant` (`name`, `Roomno`, `resbill`) VALUES
+('Saksham', '102', 298),
+('Saksham', '102', 417),
+('Saksham', '201', 437),
+('Saksham', 'NULL', 437);
 
 -- --------------------------------------------------------
 
@@ -197,7 +209,8 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `password`, `phone`, `name`, `email`, `registrationDate`) VALUES
-('101', '101', '8112273369', 'Saksham Jain', 'saksham.jain@sap.com', '2021-04-23 19:27:29');
+('101', '101', '8112273369', 'Saksham Jain', 'saksham.jain@sap.com', '2021-04-23 19:27:29'),
+('S0002', '101', '9166017690', 'Rahul', 'rahul@sap.com', '2021-05-21 22:56:41');
 
 -- --------------------------------------------------------
 
@@ -206,19 +219,11 @@ INSERT INTO `staff` (`id`, `password`, `phone`, `name`, `email`, `registrationDa
 --
 
 CREATE TABLE `visitor` (
-  `name` char(50) DEFAULT NULL,
+  `name` char(50) NOT NULL,
   `phnNo` char(11) DEFAULT NULL,
-  `Roomno` varchar(6) DEFAULT NULL,
-  `vdate` datetime DEFAULT NULL
+  `Roomno` varchar(6) NOT NULL,
+  `vdate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `visitor`
---
-
-INSERT INTO `visitor` (`name`, `phnNo`, `Roomno`, `vdate`) VALUES
-('sa', '8112273369', '101', '2021-05-03 16:35:00'),
-('Saksham', '8112273369', '207', '2021-05-18 16:44:06');
 
 --
 -- Indexes for dumped tables
@@ -243,6 +248,12 @@ ALTER TABLE `guest`
   ADD PRIMARY KEY (`RoomNo`,`CheckInDate`);
 
 --
+-- Indexes for table `restaurant`
+--
+ALTER TABLE `restaurant`
+  ADD PRIMARY KEY (`name`,`Roomno`,`resbill`);
+
+--
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
@@ -253,6 +264,12 @@ ALTER TABLE `rooms`
 --
 ALTER TABLE `silver`
   ADD PRIMARY KEY (`roomno`);
+
+--
+-- Indexes for table `visitor`
+--
+ALTER TABLE `visitor`
+  ADD PRIMARY KEY (`name`,`Roomno`,`vdate`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
