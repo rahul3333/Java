@@ -326,6 +326,18 @@ public class NewGuest extends javax.swing.JFrame {
         return fromDate;
     }
     
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+    
     private void bookNewRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookNewRoomActionPerformed
         try {
             Class.forName("java.sql.Driver");
@@ -360,24 +372,30 @@ public class NewGuest extends javax.swing.JFrame {
                 type = "PLATINUM";
             }
 
-            if (PhnNo.length() >= 10 && PhnNo.length() <= 11) {
-                if(Integer.parseInt(NoOfP) <=2 && Integer.parseInt(NoOfP) >0)
-                {
-                    String query = "INSERT INTO guest (`RoomNo`, `Name`, `Occupants`, `Days`, `Type`, `PhoneNo`, `CheckInDate`, `CheckOutDate`, `BookingDate`) VALUES('" + (RoomNo) + "','" + (Name) + "','" + (NoOfP) + "','" + (NoOfDays) + "','" + (type) + "','" + (PhnNo) + "','" + (dateCheckIn) + "','" + (dateCheckOut) + "',sysdate());";
-                    stmt.executeUpdate(query);
-                    //updatestatus(RoomNo,type);
-                    JOptionPane.showMessageDialog(null, "Guest Inserted");
-                    NewVisitor obj=new NewVisitor(RoomNo, Integer.parseInt(NoOfP),dateCheckIn);
-                    obj.setVisible(true);
-                    this.dispose();
+            if(isNumeric(PhnNo) && isNumeric(NoOfP)){
+                if (PhnNo.length() >= 10 && PhnNo.length() <= 11) {
+                    if(Integer.parseInt(NoOfP) <=2 && Integer.parseInt(NoOfP) >0)
+                    {
+                        String query = "INSERT INTO guest (`RoomNo`, `Name`, `Occupants`, `Days`, `Type`, `PhoneNo`, `CheckInDate`, `CheckOutDate`, `BookingDate`) VALUES('" + (RoomNo) + "','" + (Name) + "','" + (NoOfP) + "','" + (NoOfDays) + "','" + (type) + "','" + (PhnNo) + "','" + (dateCheckIn) + "','" + (dateCheckOut) + "',sysdate());";
+                        stmt.executeUpdate(query);
+                        //updatestatus(RoomNo,type);
+                        JOptionPane.showMessageDialog(null, "Guest Inserted");
+                        NewVisitor obj=new NewVisitor(RoomNo, Integer.parseInt(NoOfP),dateCheckIn);
+                        obj.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Invalid Number of Guest");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Phone Number");
                 }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "Invalid Number of Guest");
-                }
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid Phone Number");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Invalid Entry");
             }
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "error");

@@ -268,7 +268,7 @@ public class AmtCalculator extends javax.swing.JFrame {
             Class.forName("java.sql.Driver");
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/rms", "root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "Select * from guest where RoomNO='" + selectedRoom + "';";
+            String query = "Select * from guest where RoomNO='" + selectedRoom + "' AND CheckedOut = 0;";
 
             ResultSet rs = stmt.executeQuery(query);
 
